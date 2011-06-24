@@ -16,6 +16,42 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
   `locked_by` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
+  `sportsman_team_id` SERIAL,
+  `title` varchar(255) NOT NULL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
+  `sportsman_game_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
+  `sportsman_tournament_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_teammembers` (
+  `sportsman_teammember_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_basketballstats` (
+  `sportsman_basketballstat_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_baseballstats` (
+  `sportsman_baseballstat_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_softballstats` (
+  `sportsman_softballstat_id` SERIAL,
+  
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 INSERT INTO `#__sportsman_sports` VALUES (1, 'Basketball');
 INSERT INTO `#__sportsman_sports` VALUES (2, 'Baseball');
 INSERT INTO `#__sportsman_sports` VALUES (3, 'Softball');
