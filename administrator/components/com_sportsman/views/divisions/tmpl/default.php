@@ -1,6 +1,4 @@
 
-<?= @toolbar(); ?>
-
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
 <table class="adminlist">
 <thead>
@@ -60,7 +58,7 @@
             <?= @escape($division->id) ?>
         </td>
         <td>
-            <a href="<?= @route('view=divion&id='.$division->id) ?>">
+            <a href="<?= @route('view=division&id='.$division->id) ?>">
                 <?= @escape($division->title) ?>
             </a>
         </td>
