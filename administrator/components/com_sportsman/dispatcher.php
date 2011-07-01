@@ -7,7 +7,6 @@ class ComSportsmanDispatcher extends ComDefaultDispatcher
         $config->append(array(
             'controller' => 'dashboard'
         ));
-
         parent::_initialize($config);
     }
 }

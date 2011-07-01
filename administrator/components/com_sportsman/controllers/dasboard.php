@@ -1,8 +1,8 @@
 <?php
-class ComSportsmanControllerDashboard extends ComDefaultControllerPage
+class ComSportsmanControllerDashboard extends ComDefaultControllerResource
 {
-    protected function _initialize (KConfig $config)
-    {
+    protected function _initialize (KConfig $config) 
+    {	
         $config->append(array(
             'request' => array('layout' => 'default'),
         ));
