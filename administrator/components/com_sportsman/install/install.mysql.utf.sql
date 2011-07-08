@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS `#__sportsman_sports` (
   `sportsman_sport_id` SERIAL,
-  `title` varchar(255) NOT NULL
+  `title` varchar(255) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY ( `sportsman_sport_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
@@ -14,43 +16,44 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
   `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_by` int(11) NOT NULL DEFAULT 0,
   `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `locked_by` int(11) NOT NULL DEFAULT 0
+  `locked_by` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY ( `sportsman_division_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `sportsman_team_id` SERIAL,
   `title` varchar(255) NOT NULL,
-  
+  PRIMARY KEY ( `sportsman_team_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_game_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
   `sportsman_tournament_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_tournament_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_teammembers` (
   `sportsman_teammember_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_teammember_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_basketballstats` (
   `sportsman_basketballstat_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_basketballstat_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_baseballstats` (
   `sportsman_baseballstat_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_baseballstat_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_softballstats` (
   `sportsman_softballstat_id` SERIAL,
-  
+  PRIMARY KEY ( `sportsman_softballstat_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `#__sportsman_sports` VALUES (1, 'Basketball');
