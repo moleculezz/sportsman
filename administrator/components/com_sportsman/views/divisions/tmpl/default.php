@@ -17,7 +17,7 @@
             <?= @helper('grid.sort', array('column' => 'access')) ?>
         </th>
         <th width="8%">
-            <?= @helper('grid.sort', array('title' => 'Author', 'column' => 'created_by_name')) ?>
+            <?= @helper('grid.sort', array('title' => 'Sport', 'column' => 'sport_title')) ?>
         </th>
         <th width="8%">
             <?= @helper('grid.sort', array('title' => 'Date', 'column' => 'created_on')) ?>
@@ -69,8 +69,8 @@
             <?= @helper('grid.access', array('row' => $division)) ?>
         </td>
         <td>
-            <a href="<?= @route('option=com_users&view=user&id='.$division->created_by) ?>">
-                <?= $division->created_by_name ?>
+            <a href="<?= @route('view=sport&id='.$division->sport_id) ?>">
+                <?= $division->sport_title ?>
             </a>
         </td>
         <td>
