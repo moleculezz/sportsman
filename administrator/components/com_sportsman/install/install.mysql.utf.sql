@@ -13,16 +13,15 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
   `access` int(11) NOT NULL DEFAULT '0',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_by` int(11) NOT NULL DEFAULT 0,
-  `modified_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(11) NOT NULL DEFAULT 0,
-  `locked_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `locked_by` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY ( `sportsman_division_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `sportsman_team_id` SERIAL,
+  `sportsman_division_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
+  `sponsor` varchar(255) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY ( `sportsman_team_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -73,3 +72,9 @@ INSERT INTO `#__sportsman_divisions` (`sportsman_division_id`, `sportsman_sport_
 (10, 1, 'Special', 1, 0, '2011-07-30 09:00:00', 0, '2011-07-31 09:00:00', 0, '0000-00-00 00:00:00', 0),
 (11, 2, 'Special', 1, 0, '2011-07-30 09:00:00', 0, '2011-07-31 09:00:00', 0, '0000-00-00 00:00:00', 0),
 (12, 3, 'Special', 1, 0, '2011-07-30 09:00:00', 0, '2011-07-31 09:00:00', 0, '0000-00-00 00:00:00', 0)
+
+INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, `title`, `sponsor`, `enabled`) VALUES 
+(1, 2, 'Aruba Jrs Pirates', 'Banco di Caribe', 1),
+(2, 8, 'Aruba Juniors', 'Aruba Lions', 1),
+(3, 5, 'Blue Devils', 'Radio Shack', 1),
+(4, 7, 'Aruba Juniors', 'Aruba Juniors', 1)
