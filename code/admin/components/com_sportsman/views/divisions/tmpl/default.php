@@ -5,7 +5,7 @@
     <tr>
         <th width="10"></th>
         <th width="2%">
-            <?= @helper('grid.sort', array('column' => 'ID')); ?>
+            <?= @text('ID'); ?>
         </th>
         <th>
             <?= @helper('grid.sort', array('column' => 'Title')); ?>
@@ -32,11 +32,11 @@
             <?=@helper('grid.search');?>
         </td>
         <td></td>
-        <td>
-            <?= @helper('listbox.access', array('attribs' => array('id' => 'divisions-form-access'))) ?>
+        <td align="center">
+            <?= @helper('listbox.access') ?>
         </td>
-        <td>
-            <?= @helper('listbox.authors', array('attribs' => array('id' => 'divisions-form-created-by'))) ?>
+        <td align="center">
+            <?= @helper('listbox.sport') ?>
         </td>
         <td></td>
     </tr>
@@ -69,7 +69,7 @@
             <?= @helper('grid.access', array('row' => $division)) ?>
         </td>
         <td>
-            <a href="<?= @route('view=sport&id='.$division->sport_id) ?>">
+            <a href="<?= @route('view=sport&id='.$division->sportsman_sport_id) ?>">
                 <?= $division->sport_title ?>
             </a>
         </td>
