@@ -1,5 +1,4 @@
 <?php
-
 class ComSportsmanControllerToolbarMenubar extends ComDefaultControllerToolbarMenubar
 {
     public function getCommands()
@@ -7,7 +6,7 @@ class ComSportsmanControllerToolbarMenubar extends ComDefaultControllerToolbarMe
         $name = $this->getController()->getIdentifier()->name;
         
         $this->addCommand('Dashboard', array(
-        	'href'   => JRoute::_('index.php?option=com_sportsman'),
+        	'href'   => JRoute::_('index.php?option=com_sportsman&view=dashboard'),
         	'active' => ($name == 'dashboard')
         ));
         
