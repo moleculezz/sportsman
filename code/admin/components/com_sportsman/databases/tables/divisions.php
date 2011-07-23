@@ -1,5 +1,5 @@
 <?php
-class ComSportsManDatabaseTableDivisions extends KDatabaseTableAbstract
+class ComSportsmanDatabaseTableDivisions extends KDatabaseTableAbstract
 {
     public function _initialize(KConfig $config)
     {
