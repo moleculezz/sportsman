@@ -10,6 +10,11 @@ class ComSportsmanControllerToolbarMenubar extends ComDefaultControllerToolbarMe
         	'active' => ($name == 'dashboard')
         ));
         
+        $this->addCommand('Teams', array(
+        	'href'   => JRoute::_('index.php?option=com_sportsman&view=teams'),
+        	'active' => ($name == 'team')
+        ));
+        
         $this->addCommand('Divisions', array(
         	'href'   => JRoute::_('index.php?option=com_sportsman&view=divisions'),
         	'active' => ($name == 'division')
