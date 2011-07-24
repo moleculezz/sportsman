@@ -4,9 +4,6 @@
 <thead>
     <tr>
         <th width="10"></th>
-        <th width="2%">
-            <?= @helper('grid.sort', array('column' => 'ID')); ?>
-        </th>
         <th>
             <?= @helper('grid.sort', array('column' => 'Title')); ?>
         </th>
@@ -19,9 +16,6 @@
             <?=@helper('grid.checkall');?>
         </td>
         <td></td>
-        <td>
-            <?=@helper('grid.search');?>
-        </td>
         <td></td>
     </tr>
 </thead>
@@ -31,13 +25,8 @@
         <td align="center">
             <?= @helper('grid.checkbox' , array('row' => $sport)) ?>
         </td>
-        <td align="center">
-            <?= @escape($sport->id) ?>
-        </td>
         <td>
-            <a href="<?= @route('view=sport&id='.$sport->id) ?>">
-                <?= @escape($sport->title) ?>
-            </a>
+            <?= @escape($sport->title) ?>
         </td>
         <td align="center">
             <?= @helper('grid.enable', array('row' => $sport)) ?>
