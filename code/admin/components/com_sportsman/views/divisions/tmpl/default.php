@@ -33,10 +33,10 @@
         </td>
         <td></td>
         <td align="center">
-            <?= @helper('listbox.access') ?>
+            <?= @helper('listbox.access'); ?>
         </td>
         <td align="center">
-            <?= @helper('listbox.sport') ?>
+            <?= @helper('listbox.sports', array('name' => 'sport','attribs' => array())); ?>
         </td>
         <td></td>
     </tr>

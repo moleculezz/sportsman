@@ -22,7 +22,18 @@ defined('KOOWA') or die('Restricted access') ?>
                         <?= @helper('select.booleanlist', array('name' => 'enabled', 'selected' => $division->enabled)) ?>
                     </td>
                 </tr>
+                <tr>
+                    <td class="key">
+                        <label for="port" class="mainlabel"><?= @text('Sport'); ?></label>
+                    </td>
+                    <td>
+                        <?=@helper('listbox.sports', array('name' => 'sport', 'selected' => $division->sportsman_sport_id)); ?>
+                    </td>
+                </tr>
             </table>
+            
+            
+            
         </div>
     </div>
 </form>
