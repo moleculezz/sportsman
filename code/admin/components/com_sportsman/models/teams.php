@@ -34,7 +34,7 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
     {
         $state = $this->_state;
         
-        if(is_numeric($state->enabled)) {
+        if (is_numeric($state->enabled)) {
             $query->where('tbl.enabled','=', $state->enabled);
         }
         
@@ -44,6 +44,12 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         
         if (is_numeric($state->sport)) {
             $query->where('tbl.sportsman_sport_id', '=', $state->sport);
+        }
+        
+        if ($state->search)
+        {
+            $search = '%'.$state->search.'%';
+            $query->where('tbl.title', 'LIKE', $search);
         }
         
         parent::_buildQueryWhere($query);
