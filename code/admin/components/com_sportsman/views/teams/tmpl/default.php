@@ -10,10 +10,13 @@
         <th>
             <?= @helper('grid.sort', array('column' => 'Title')); ?>
         </th>
+        <th>
+            <?= @text('Sponsor'); ?>
+        </th>
         <th width="7%">
             <?= @helper('grid.sort', array('column' => 'enabled')) ?>
         </th>
-        <th width="8%">
+        <th width="10%">
             <?= @helper('grid.sort', array('title' => 'Division', 'column' => 'division_title')) ?>
         </th>
         <th width="8%">
@@ -29,6 +32,7 @@
             <?=@helper('grid.search');?>
         </td>
         <td></td>
+        <td></td>
         <td align="center">
             <?= @helper('listbox.divisions', array('name' => 'division','attribs' => array())); ?>
         </td>
@@ -39,7 +43,7 @@
 </thead>
 <tfoot>
     <tr>
-        <td colspan="6">
+        <td colspan="7">
             <?= @helper('paginator.pagination', array('total' => $total)) ?>
         </td>
     </tr>
@@ -58,6 +62,9 @@
                 <?= @escape($team->title) ?>
             </a>
         </td>
+        <td>
+            <?= @escape($team->sponsor) ?>
+        </td>
         <td align="center">
             <?= @helper('grid.enable', array('row' => $team)) ?>
         </td>
@@ -75,7 +82,7 @@
 <? endforeach; ?>
 <? if (!count($teams)) : ?>
     <tr>
-        <td colspan="6" align="center">
+        <td colspan="7" align="center">
             <?= @text('No Items Found'); ?>
         </td>
     </tr>
