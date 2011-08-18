@@ -1,6 +1,7 @@
 
 <?= @template('default_sidebar') ?>
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
+<?= @template('default_filter'); ?>
 <table class="adminlist">
 <thead>
     <tr>
