@@ -7,10 +7,9 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
         parent::__construct($config);
 
         $this->_state
-            ->insert('enabled', 'int')
-            ->insert('access' , 'int')
-            ->insert('division', 'int')
-            ->insert('sport'  , 'int');
+            ->insert('enabled' , 'int')
+            ->insert('access'  , 'int')
+            ->insert('sport'   , 'int');
     }
     
     protected function _buildQueryWhere(KDatabaseQuery $query)
@@ -23,10 +22,6 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
         
         if(is_numeric($state->enabled)) {
         	$query->where('tbl.enabled','=', $state->enabled);
-        }
-        
-        if (is_numeric($state->division)) {
-            $query->where('tbl.sportsman_division_id', '=', $state->division);
         }
         
         if (is_numeric($state->sport)) {
