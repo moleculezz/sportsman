@@ -39,7 +39,7 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         }
         
         if (is_numeric($state->division)) {
-            $query->where('tbl.sportsman_division_id', '=', $state->sport);
+            $query->where('tbl.sportsman_division_id', '=', $state->division);
         }
         
         if (is_numeric($state->sport)) {
