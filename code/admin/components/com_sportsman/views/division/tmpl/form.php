@@ -2,6 +2,8 @@
 
 defined('KOOWA') or die('Restricted access') ?>
 
+<style src="media://system/css/calendar-jos.css" />
+
 <form action="<?= @route('id='.$division->id) ?>" method="post" id="division-form" class="-koowa-form">
     <div class="grid_8">
         <div class="panel title group">
@@ -30,10 +32,23 @@ defined('KOOWA') or die('Restricted access') ?>
                         <?=@helper('listbox.sports', array('name' => 'sportsman_sport_id', 'selected' => $division->sportsman_sport_id)); ?>
                     </td>
                 </tr>
+                <tr>
+                    <td class="key">
+                        <label for="created_on"><?= @text('Created on') ?></label>
+                    </td>
+                    <td>
+                        <?= @helper('behavior.calendar', array('date' => $division->created_on, 'name' => 'created_on')); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="key">
+                        <label for="ended_on"><?= @text('Ended on') ?></label>
+                    </td>
+                    <td>
+                        <?= @helper('behavior.calendar', array('date' => $division->ended_on, 'name' => 'ended_on')); ?>
+                    </td>
+                </tr>
             </table>
-            
-            
-            
         </div>
     </div>
 </form>
