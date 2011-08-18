@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `access` int(11) NOT NULL DEFAULT '0',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(11) NOT NULL DEFAULT 0,
+  `ended_on` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY ( `sportsman_division_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -25,6 +25,17 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   PRIMARY KEY ( `sportsman_team_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
+  `sportsman_team_id` bigint(20) UNSIGNED NOT NULL,
+  `sportsman_member_id` bigint(20) UNSIGNED NOT NULL,
+  PRIMARY KEY ( `sportsman_team_id`, `sportsman_member_id )
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_members` (
+  `sportsman_member_id` SERIAL,
+  PRIMARY KEY ( `sportsman_member_id` )
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` SERIAL,
   PRIMARY KEY ( `sportsman_game_id` )
@@ -33,11 +44,6 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
 CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
   `sportsman_tournament_id` SERIAL,
   PRIMARY KEY ( `sportsman_tournament_id` )
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-CREATE TABLE IF NOT EXISTS `#__sportsman_teammembers` (
-  `sportsman_teammember_id` SERIAL,
-  PRIMARY KEY ( `sportsman_teammember_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_basketballstats` (
