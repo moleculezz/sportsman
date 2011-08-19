@@ -12,8 +12,16 @@ defined('KOOWA') or die('Restricted access') ?>
     </div>
     <div class="grid_4">
         <div class="panel">
-            <h3><?= @text( 'Publish' ); ?></h3>
+            <h3><?= @text( 'Details' ); ?></h3>
             <table class="admintable">
+                <tr>
+                    <td class="key">
+                        <label for="sponsor"><?= @text('Sponsor') ?></label>
+                    </td>
+                    <td>
+                        <input class="inputbox required" type="text" name="sponsor" id="sponsor" size="25" maxlength="255" value="<?= @escape($team->sponsor) ?>" />
+                    </td>
+                </tr>
                 <tr>
                     <td class="key">
                         <label for="enabled">
