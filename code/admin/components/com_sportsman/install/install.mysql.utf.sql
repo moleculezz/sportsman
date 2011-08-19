@@ -86,3 +86,8 @@ INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, 
 (2, 8, 'Aruba Juniors', 'Aruba Lions', 1),
 (3, 5, 'Blue Devils', 'Radio Shack', 1),
 (4, 7, 'Aruba Juniors', 'Aruba Juniors', 1)
+
+CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
+  SELECT tbl.*, s.title AS sport_title
+  FROM `#__sportsman_divisions` AS tbl
+  LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = tbl.sportsman_sport_id;
