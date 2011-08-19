@@ -18,10 +18,7 @@
             <?= @helper('grid.sort', array('column' => 'enabled')) ?>
         </th>
         <th width="10%">
-            <?= @helper('grid.sort', array('title' => 'Division', 'column' => 'division_title')) ?>
-        </th>
-        <th width="8%">
-            <?= @helper('grid.sort', array('title' => 'Sport', 'column' => 'sport_title')) ?>
+            <?= @text('Created on'); ?>
         </th>
     </tr>
     <tr>
@@ -34,17 +31,12 @@
         </td>
         <td></td>
         <td></td>
-        <td align="center">
-            <?= @helper('listbox.divisions', array('name' => 'division','attribs' => array())); ?>
-        </td>
-        <td align="center">
-            <?= @helper('listbox.sports', array('name' => 'sport','attribs' => array())); ?>
-        </td>
+        <td></td>
     </tr>
 </thead>
 <tfoot>
     <tr>
-        <td colspan="7">
+        <td colspan="6">
             <?= @helper('paginator.pagination', array('total' => $total)) ?>
         </td>
     </tr>
@@ -69,21 +61,14 @@
         <td align="center">
             <?= @helper('grid.enable', array('row' => $team)) ?>
         </td>
-        <td>
-            <a href="<?= @route('view=division&id='.$team->sportsman_division_id) ?>">
-                <?= $team->division_title ?>
-            </a>
-        </td>
-        <td>
-            <a href="<?= @route('view=sport&id='.$team->sportsman_sport_id) ?>">
-                <?= $team->sport_title ?>
-            </a>
+        <td align="center">
+            <?= @helper('date.format', array('date' => $team->created_on, 'format' => '%#d %B %Y')) ?>
         </td>
     </tr>
 <? endforeach; ?>
 <? if (!count($teams)) : ?>
     <tr>
-        <td colspan="7" align="center">
+        <td colspan="6" align="center">
             <?= @text('No Items Found'); ?>
         </td>
     </tr>
