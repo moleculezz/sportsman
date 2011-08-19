@@ -18,7 +18,8 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         parent::_buildQueryColumns($query);
         
         $query->select('division.title AS division_title')
-            ->select('sport.title AS sport_title');
+            ->select('sport.title AS sport_title')
+            ->select('sport.sportsman_sport_id');
     }
     
     protected function _buildQueryJoins(KDatabaseQuery $query)
@@ -43,7 +44,7 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         }
         
         if (is_numeric($state->sport)) {
-            $query->where('tbl.sportsman_sport_id', '=', $state->sport);
+            $query->where('sport.sportsman_sport_id', '=', $state->sport);
         }
         
         if ($state->search)
@@ -53,5 +54,25 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         }
         
         parent::_buildQueryWhere($query);
+    }
+    
+    public function getDivisions()
+    {
+        
+        $list = $this
+            ->set('enabled', 1)
+            ->getList();
+
+        foreach($list as $item)
+        {
+            if(!isset($divisions[$item->sportsman_sport_id])) {
+                $divisions[$item->sportsman_sport_id]['id'] = $item->sportsman_sport_id;
+                $divisions[$item->sportsman_sport_id]['title'] = $item->sport_title;
+            }
+            
+            $divisions[$item->sportsman_sport_id]['divisions'][] = array('id' => $item->sportsman_division_id, 'title' => $item->division_title);
+        }
+
+        return $divisions;
     }
 }
