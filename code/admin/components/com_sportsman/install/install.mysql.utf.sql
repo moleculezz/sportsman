@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `access` int(11) NOT NULL DEFAULT '0',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ended_on` date NOT NULL DEFAULT '0000-00-00',
+  `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_division_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `title` varchar(255) NOT NULL,
   `sponsor` varchar(255) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_team_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
