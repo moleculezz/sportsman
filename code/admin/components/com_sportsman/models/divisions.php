@@ -7,7 +7,7 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
         parent::__construct($config);
 
         $this->_state
-            ->insert('enabled' , 'int')
+            ->insert('enabled' , 'int', 1)
             ->insert('access'  , 'int')
             ->insert('sport'   , 'int');
     }
@@ -31,6 +31,7 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
         parent::_buildQueryWhere($query);
     }
     
+    // All divisions & sport
     public function getDivisions()
     {
         
