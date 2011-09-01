@@ -6,4 +6,4 @@ if(!defined('KOOWA')) {
     return;
 }
 
-echo KFactory::get('admin::com.sportsman.dispatcher')->dispatch();
+echo KFactory::get('com://admin/sportsman.dispatcher')->dispatch();

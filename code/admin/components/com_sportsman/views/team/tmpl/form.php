@@ -52,7 +52,7 @@ defined('KOOWA') or die('Restricted access') ?>
         </div>
         <div class="panel folders group">
             <h3><?= @text('Divisions') ?></h3>
-            <?= @template('form_divisions', array('list' =>  KFactory::tmp('admin::com.sportsman.model.divisions')->getDivisions(), 'team' => $team)) ?>
+            <?= @template('form_divisions', array('list' =>  KFactory::get('com://admin/sportsman.model.divisions')->getDivisions(), 'team' => $team)) ?>
         </div>
     </div>
 </form>
