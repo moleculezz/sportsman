@@ -56,6 +56,8 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         parent::_buildQueryWhere($query);
     }
     
+    //TODO Probably there is a way to make this more DRY
+    // Only divisions that contain teams
     public function getDivisions()
     {
         
