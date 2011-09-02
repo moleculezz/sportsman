@@ -19,12 +19,19 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_divisions` (
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `sportsman_team_id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `sportsman_division_id` bigint(20) UNSIGNED NOT NULL,
+  `sportsman_club_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `sponsor` varchar(255) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_team_id` )
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__sportsman_clubs` (
+  `sportsman_club_id` bigint(20) UNSIGNED NOT NULL auto_increment,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY ( `sportsman_club_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
@@ -40,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_members` (
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` bigint(20) UNSIGNED NOT NULL auto_increment,
+  
   PRIMARY KEY ( `sportsman_game_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -91,6 +99,9 @@ INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, 
 (2, 8, 'Aruba Juniors', 'Aruba Lions', 1),
 (3, 5, 'Blue Devils', 'Radio Shack', 1),
 (4, 7, 'Aruba Juniors', 'Aruba Juniors', 1)
+
+INSERT INTO `#__sportsman_clubs` VALUES (1, 'None');
+INSERT INTO `#__sportsman_clubs` VALUES (2, 'Club');
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title
