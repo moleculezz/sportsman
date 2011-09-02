@@ -47,7 +47,13 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_members` (
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` bigint(20) UNSIGNED NOT NULL auto_increment,
-  
+  `sportsman_tournament_id` bigint(20) UNSIGNED NOT NULL,
+  `sportsman_home_team_id` bigint(20) UNSIGNED NOT NULL,
+  `sportsman_away_team_id` bigint(20) UNSIGNED NOT NULL,
+  `venue` varchar(255) NOT NULL,
+  `game_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `home_team_score` tinyint(3) NOT NULL,
+  `away_team_score` tinyint(3) NOT NULL,
   PRIMARY KEY ( `sportsman_game_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -102,6 +108,8 @@ INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, 
 
 INSERT INTO `#__sportsman_clubs` VALUES (1, 'None');
 INSERT INTO `#__sportsman_clubs` VALUES (2, 'Club');
+
+INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98)
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title
