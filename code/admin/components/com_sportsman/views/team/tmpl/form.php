@@ -16,6 +16,14 @@ defined('KOOWA') or die('Restricted access') ?>
             <table class="admintable">
                 <tr>
                     <td class="key">
+                        <label for="club" class="mainlabel"><?= @text('Club'); ?></label>
+                    </td>
+                    <td>
+                        <?=@helper('listbox.clubs', array('name' => 'sportsman_club_id')); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="key">
                         <label for="sponsor"><?= @text('Sponsor') ?></label>
                     </td>
                     <td>
@@ -52,7 +60,7 @@ defined('KOOWA') or die('Restricted access') ?>
         </div>
         <div class="panel folders group">
             <h3><?= @text('Divisions') ?></h3>
-            <?= @template('form_divisions', array('list' =>  KFactory::get('com://admin/sportsman.model.divisions')->getDivisions(), 'team' => $team)) ?>
+            <?= @template('form_divisions', array('list' =>  KFactory::get('com://admin/sportsman.model.divisions')->getDivisions())) ?>
         </div>
     </div>
 </form>
