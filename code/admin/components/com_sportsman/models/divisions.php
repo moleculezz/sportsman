@@ -1,5 +1,19 @@
 <?php
-
+/**
+ * @category	Nooku
+ * @package		Sportsman
+ * @copyright	Copyright (C) G.D. Arends. All rights reserved.
+ * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
+ */
+ 
+ 
+ /**
+ * Divisions Model Class
+ *
+ * @author      G.D. Arends <https://github.com/moleculezz>
+ * @category    Nooku
+ * @package     Sportsman 
+ */
 class ComSportsmanModelDivisions extends ComDefaultModelDefault
 {
     public function __construct(KConfig $config)
