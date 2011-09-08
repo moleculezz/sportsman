@@ -115,3 +115,16 @@ CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title
   FROM `#__sportsman_divisions` AS tbl
   LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = tbl.sportsman_sport_id;
+  
+CREATE OR REPLACE VIEW `#__sportsman_view_teams` AS
+  SELECT tbl.*, d.title AS division_title, s.title AS sport_title, c.title AS club_title, s.sportsman_sport_id
+  FROM `#__sportsman_teams` AS tbl
+  LEFT JOIN `#__sportsman_clubs` AS c ON c.sportsman_club_id = tbl.sportsman_club_id
+  LEFT JOIN `#__sportsman_divisions` AS d ON d.sportsman_division_id = tbl.sportsman_division_id
+  LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = d.sportsman_sport_id;
+  
+CREATE OR REPLACE VIEW `#__sportsman_view_tournaments` AS
+  SELECT tbl.*, d.title AS division_title, s.title AS sport_title, s.sportsman_sport_id
+  FROM `#__sportsman_tournaments` AS tbl
+  LEFT JOIN `#__sportsman_divisions` AS d ON d.sportsman_division_id = tbl.sportsman_division_id
+  LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = d.sportsman_sport_id;

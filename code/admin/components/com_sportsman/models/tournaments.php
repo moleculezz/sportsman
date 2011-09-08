@@ -12,24 +12,6 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
             ->insert('sport'   , 'int');
     }
     
-    protected function _buildQueryColumns(KDatabaseQuery $query)
-    {
-        parent::_buildQueryColumns($query);
-        
-        $query->select('division.title AS division_title')
-            ->select('sport.title AS sport_title')
-            ->select('sport.sportsman_sport_id');
-    }
-    
-    protected function _buildQueryJoins(KDatabaseQuery $query)
-    {
-        parent::_buildQueryJoins($query);
-        
-        $query->join('LEFT', 'sportsman_divisions AS division', 'division.sportsman_division_id = tbl.sportsman_division_id')
-              ->join('LEFT', 'sportsman_sports AS sport', 'sport.sportsman_sport_id = division.sportsman_sport_id');
-        
-    }
-    
     protected function _buildQueryWhere(KDatabaseQuery $query)
     {
         $state = $this->_state;
