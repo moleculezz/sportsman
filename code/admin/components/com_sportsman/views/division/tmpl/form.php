@@ -26,7 +26,7 @@ defined('KOOWA') or die('Restricted access') ?>
                 </tr>
                 <tr>
                     <td class="key">
-                        <label for="port" class="mainlabel"><?= @text('Sport'); ?></label>
+                        <label for="sport" class="mainlabel"><?= @text('Sport'); ?></label>
                     </td>
                     <td>
                         <?=@helper('listbox.sports', array('name' => 'sportsman_sport_id', 'selected' => $division->sportsman_sport_id)); ?>
