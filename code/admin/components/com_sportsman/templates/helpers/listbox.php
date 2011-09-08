@@ -16,15 +16,15 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         return parent::_listbox($config);
     }
     
-    public function divisions( $config = array())
+    public function clubs( $config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
-            'model'    => 'divisions',
-            'name'     => 'sportsman_division_id',
+            'model'    => 'clubs',
+            'name'     => 'sportsman_club_id',
             'value'    => 'id',
             'text'     => 'title',
-            'prompt'   => '- Select Division -',
+            'prompt'   => '- Select Club -',
             'attribs'  => array('id' => $config->name)
         ));
         return parent::_listbox($config);
