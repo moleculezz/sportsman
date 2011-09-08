@@ -1,6 +1,6 @@
 <?php
 
-class ComSportsmanViewDashboardHtml extends ComHarbourViewHtml
+class ComSportsmanViewDashboardHtml extends ComSportsmanViewHtml
 {
     public function display()
     {
