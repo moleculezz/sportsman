@@ -1,0 +1,23 @@
+#game-container h2 { margin: 0 }
+
+.tournament select{ font-size: 20px; line-height: 24px; width: 100%; }
+#teams {}
+.drop { min-height: 120px; margin-top: 10px; }
+.teams li { float: left; width: 134px; padding: 2px; margin: 0 2px 2px 0; text-align: center; }
+.drop li h3 { margin: 0 0 2px; cursor: move; font-size: 11px; }
+.drop li img { cursor: move; display: block; margin: 0 auto; }
+.drop li a { float: right; }
+.drop li a.ui-icon-home { float: left; }
+
+.game,
+.versus {text-align: center; }
+.game h2 { line-height: 16px; margin: 0 0 4px; text-align: center; }
+.game ul { display: inline-block; }
+.game ul li { float: left; width:134px; text-align: center;}
+
+.game input { width: 134px; float: none; font-size: 18px; text-align: center; }
+
+.versus { min-height: 185px; padding:12px; }
+.versus h1 { line-height: 185px; margin: 0; padding: 0; }
+
+/**** nooku overrides ****/
