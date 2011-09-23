@@ -118,8 +118,6 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
             'prompt'   => '- Select Tournament -',
             'attribs'  => array('id' => $config->name)
         ));
-        
-        
         return $this->_listbox($config);
     }
     
