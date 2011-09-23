@@ -39,7 +39,7 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
         }
         
         if (is_numeric($state->sport)) {
-            $query->where('sport.sportsman_sport_id', '=', $state->sport);
+            $query->where('tbl.sportsman_sport_id', '=', $state->sport);
         }
         
         parent::_buildQueryWhere($query);
@@ -57,11 +57,11 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
         foreach($list as $item)
         {
             if(!isset($divisions[$item->sportsman_sport_id])) {
-                $divisions[$item->sportsman_sport_id]['id'] = $item->sportsman_sport_id;
-                $divisions[$item->sportsman_sport_id]['title'] = $item->sport_title;
+                $divisions[$item->sportsman_sport_id] = array('title' => $item->sport_title);
             }
-            
-            $divisions[$item->sportsman_sport_id]['divisions'][] = array('id' => $item->sportsman_division_id, 'title' => $item->division_title);
+            if(!isset($divisions[$item->sportsman_sport_id]['divisions'][$item->sportsman_division_id])) {
+                $divisions[$item->sportsman_sport_id]['divisions'][$item->sportsman_division_id] = array('title' => $item->division_title);
+            }
         }
 
         return $divisions;
