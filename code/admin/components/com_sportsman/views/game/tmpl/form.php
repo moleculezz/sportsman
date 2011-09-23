@@ -1,6 +1,12 @@
 <?php
 
-defined('KOOWA') or die('Restricted access') ?>
+defined('KOOWA') or die('Restricted access'); 
+
+$root = JURI::root(true);
+$root_images = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_IMAGES);
+
+//TODO : fix ajax request url & image url?
+?>
 
 <style src="media://system/css/calendar-jos.css" />
 
@@ -18,6 +24,10 @@ jQuery(function($) {
         $home_team = $( '#home-team' ),
         $away_team = $( '#away-team' ),
         $tournament= $( '#sportsman_tournament_id' );
+    
+    var home_icon   = '<a href="#" title="Add home team" class="ui-icon ui-icon-home">Add home</a>',
+        away_icon   = '<a href="#" title="Add away team" class="ui-icon ui-icon-arrowthick-1-se">Add away</a>',
+        remove_icon = '<a href="#" title="Remove team from game" class="ui-icon ui-icon-close">Remove team</a>';
 
     initTeams();
     
@@ -64,10 +74,8 @@ jQuery(function($) {
     }
 
     function getTeams (id) {
-        <?php //TODO : make request url dynamic ?>
-        
         $.ajax({
-            url: 'http://localhost/ns/administrator/index.php/sportsman/teams?division='+ id +'&format=json',
+            url: '<?= $root ?>/administrator/index.php/sportsman/teams?division='+ id +'&format=json',
             type: 'get',
             dataType: 'json',
             success: function(data) {
@@ -110,20 +118,24 @@ jQuery(function($) {
         for(var i = 0; i < data.length; i++) {
             
             var $li = $('<li class="ui-widget-content ui-corner-tr" data-team_id="'+ data[i].id +'">');
-            <?php //TODO: fix image url ?>
                     
             $li.append('<h3 class="ui-widget-header">' + data[i].title + '</h3>')
-            .append('<img src="http://localhost/ns/sites/default/images/' + data[i].logo + '" alt="' + data[i].title + '" width="64" height="64" />')
-            .append('<a href="#" title="Add home team" class="ui-icon ui-icon-home">Add home</a>')
-            .append('<a href="#" title="Add away team" class="ui-icon ui-icon-arrowthick-1-se">Add away</a>');
+            .append('<img src="<?= $root_images ?>/' + data[i].logo + '" alt="' + data[i].title + '" width="64" height="64" />');
             
             if( home_id !== '' && String(home_id) === data[i].id ) {
-            	$home.replaceWith($li);
+                $li
+                .append( remove_icon );
+                $home.replaceWith($li);
             }
             else if ( away_id !== '' && String(away_id) === data[i].id ) {
+                $li
+                .append( remove_icon );
                 $away.replaceWith($li);
             }
             else {
+                $li
+                .append( home_icon )
+                .append( away_icon );
                 $li.appendTo( $list );
             }
         }
@@ -170,9 +182,7 @@ jQuery(function($) {
     }
     // switch icons
     function switchIcons( $item, addTo ) {
-        var home_icon   = '<a href="#" title="Add home team" class="ui-icon ui-icon-home">Add home</a>',
-            away_icon   = '<a href="#" title="Add away team" class="ui-icon ui-icon-arrowthick-1-se">Add away</a>',
-            remove_icon = '<a href="#" title="Remove team from game" class="ui-icon ui-icon-close">Remove team</a>';
+        
         if ( addTo === 'game' ) {
             $item
                 .find( "a.ui-icon-home" ).remove().end()
