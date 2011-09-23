@@ -8,16 +8,16 @@ defined('KOOWA') or die( 'Restricted access' ); ?>
             <?= 'All Sports' ?>
         </a>
     </li>
-    <? foreach($sports as $sport) : ?>
-    <li class="<?= $state->sport == $sport['id'] ? 'active' : ''; ?>">
-        <a href="<?= @route('division='.'&sport='.$sport['id']) ?>">
+    <? foreach($sports as $sid => $sport) : ?>
+    <li class="<?= $state->sport == $sid ? 'active' : ''; ?>">
+        <a href="<?= @route('division='.'&sport='.$sid) ?>">
             <?= @escape($sport['title']) ?>
         </a>
         <? if(!empty($sport['divisions'])) : ?>
         <ul>
-            <? foreach($sport['divisions'] as $division) : ?>
-            <li class="<?= $state->division == $division['id'] ? 'active' : ''; ?>">
-                <a href="<?= @route('division='.$division['id'].'&sport='.$sport['id'] ) ?>">
+            <? foreach($sport['divisions'] as $did => $division) : ?>
+            <li class="<?= $state->division == $did ? 'active' : ''; ?>">
+                <a href="<?= @route('division='.$did.'&sport='.$sid ) ?>">
                     <?= $division['title']; ?>
                 </a>
             </li>
