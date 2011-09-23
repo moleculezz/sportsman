@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `sportsman_club_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `sponsor` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -31,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
 CREATE TABLE IF NOT EXISTS `#__sportsman_clubs` (
   `sportsman_club_id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `title` varchar(255) NOT NULL,
+  `logo` varchar(60),
   PRIMARY KEY ( `sportsman_club_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -128,3 +130,15 @@ CREATE OR REPLACE VIEW `#__sportsman_view_tournaments` AS
   FROM `#__sportsman_tournaments` AS tbl
   LEFT JOIN `#__sportsman_divisions` AS d ON d.sportsman_division_id = tbl.sportsman_division_id
   LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = d.sportsman_sport_id;
+  
+CREATE OR REPLACE VIEW `#__sportsman_view_games` AS
+  SELECT tbl.*, h.title AS home_team_title, h.sportsman_club_id AS home_team_club_id,
+    a.title AS away_team_title, a.sportsman_club_id AS away_team_club_id,
+    t.title AS tournament_title, d.sportsman_division_id, d.title AS division_title, s.sportsman_sport_id, s.title AS sports_title
+  FROM `#__sportsman_games` AS tbl 
+  LEFT OUTER JOIN `#__sportsman_teams` AS h ON h.sportsman_team_id = tbl.home_team_id
+  LEFT OUTER JOIN `#__sportsman_teams` AS a ON a.sportsman_team_id = tbl.away_team_id 
+  LEFT JOIN `#__sportsman_tournaments` AS t ON tbl.sportsman_tournament_id = t.sportsman_tournament_id
+  LEFT JOIN `#__sportsman_divisions` AS d ON h.sportsman_division_id = d.sportsman_division_id
+  LEFT JOIN `#__sportsman_sports` AS s ON d.sportsman_sport_id = s.sportsman_sport_id
+
