@@ -6,6 +6,7 @@ $root = JURI::root(true);
 $root_images = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_IMAGES);
 
 //TODO : fix ajax request url & image url?
+//TODO : move js code to file
 ?>
 
 <style src="media://system/css/calendar-jos.css" />
@@ -20,10 +21,10 @@ $root_images = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_IMAGES);
 jQuery.noConflict();
 
 jQuery(function($) {
-    var $teams = $( '#teams' ),
-        $home_team = $( '#home-team' ),
-        $away_team = $( '#away-team' ),
-        $tournament= $( '#sportsman_tournament_id' );
+    var $teams      = $( '#teams' ),
+        $home_team  = $( '#home-team' ),
+        $away_team  = $( '#away-team' ),
+        $tournament = $( '#sportsman_tournament_id' );
     
     var home_icon   = '<a href="#" title="Add home team" class="ui-icon ui-icon-home">Add home</a>',
         away_icon   = '<a href="#" title="Add away team" class="ui-icon ui-icon-arrowthick-1-se">Add away</a>',
@@ -37,7 +38,7 @@ jQuery(function($) {
         //clear team id input value
         $('.droppable').children('.team_id').val("");
         
-        changeTeams();
+        initTeams();
     });
 
     // resolve the icons behavior with event delegation
@@ -60,13 +61,6 @@ jQuery(function($) {
 
     function initTeams() {
         
-        var division = $('option:selected', $tournament).data('division');
-        if (division !== "") { //undefined
-            getTeams(division);
-        }
-    }
-
-    function changeTeams() {
         var division = $('option:selected', $tournament).data('division');
         if (division !== "") { //undefined
             getTeams(division);
