@@ -3,7 +3,8 @@
 defined('KOOWA') or die('Restricted access'); 
 
 $root = JURI::root(true);
-$root_images = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_IMAGES);
+$site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
+$admin = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_ADMINISTRATOR).'/';
 
 //TODO : fix ajax request url & image url?
 //TODO : move js code to file
@@ -62,14 +63,14 @@ jQuery(function($) {
     function initTeams() {
         
         var division = $('option:selected', $tournament).data('division');
-        if (division !== "") { //undefined
+        if ( division ) { //undefined
             getTeams(division);
         }
     }
 
     function getTeams (id) {
         $.ajax({
-            url: '<?= $root ?>/administrator/index.php/sportsman/teams?division='+ id +'&format=json',
+            url: '<?= $admin ?>index.php?option=com_sportsman&view=teams&division='+ id +'&format=json',
             type: 'get',
             dataType: 'json',
             success: function(data) {
@@ -114,7 +115,7 @@ jQuery(function($) {
             var $li = $('<li class="ui-widget-content ui-corner-tr" data-team_id="'+ data[i].id +'">');
                     
             $li.append('<h3 class="ui-widget-header">' + data[i].title + '</h3>')
-            .append('<img src="<?= $root_images ?>/' + data[i].logo + '" alt="' + data[i].title + '" width="64" height="64" />');
+            .append('<img src="<?= $site ?>' + data[i].logo + '" alt="' + data[i].title + '" width="64" height="64" />');
             
             if( home_id !== '' && String(home_id) === data[i].id ) {
                 $li
