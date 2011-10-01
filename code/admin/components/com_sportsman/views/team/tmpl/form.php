@@ -1,9 +1,17 @@
 <?php
 
 defined('KOOWA') or die('Restricted access') ?>
-
+<?= @helper('behavior.modal') ?>
+<?php $site = JURI::root(true).'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/'; ?>
 <style src="media://system/css/calendar-jos.css" />
+<script>
 
+function insertImageUrl ( image ) {
+	document.getElementById('logo').value = image;
+	document.getElementById('logo-img').src = '<?= $site ?>' + image;
+}
+
+</script>
 <form action="<?= @route('id='.$team->id) ?>" method="post" id="division-form" class="-koowa-form">
     <div class="grid_8">
         <div class="panel title group">
@@ -57,6 +65,15 @@ defined('KOOWA') or die('Restricted access') ?>
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="panel folders group">
+        <img id="logo-img" src="<?= $site.'/'.$team->logo ?>" title="<?= $team->name ?>" alt="<?= $team->name ?>" />
+        <?= @helper('com://admin/files.template.helper.modal.select', array(
+            'name' => 'logo', 
+            'value' => $team->logo, 
+            'link' => @route('option=com_files&view=images&layout=select&tmpl=component#image-insert-form')
+        )); ?>
+            
         </div>
         <div class="panel folders group">
             <h3><?= @text('Divisions') ?></h3>
