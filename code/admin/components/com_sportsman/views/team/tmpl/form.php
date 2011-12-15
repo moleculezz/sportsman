@@ -71,13 +71,13 @@ function insertImageUrl ( image ) {
         <?= @helper('com://admin/files.template.helper.modal.select', array(
             'name' => 'logo', 
             'value' => $team->logo, 
-            'link' => @route('option=com_files&view=images&layout=select&tmpl=component#image-insert-form')
+            'link' => @route('option=com_files&view=images&layout=select&tmpl=component')
         )); ?>
             
         </div>
         <div class="panel folders group">
             <h3><?= @text('Divisions') ?></h3>
-            <?= @template('form_divisions', array('list' =>  KFactory::get('com://admin/sportsman.model.divisions')->getDivisions())) ?>
+            <?= @template('form_divisions', array('list' => KFactory::get('com://admin/sportsman.model.divisions')->getDivisions())) ?>
         </div>
     </div>
 </form>

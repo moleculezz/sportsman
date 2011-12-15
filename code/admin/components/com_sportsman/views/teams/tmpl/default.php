@@ -1,13 +1,14 @@
-
+<?php 
+$root = JURI::root(true);
+$site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
+?>
 <?= @template('default_sidebar') ?>
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
 <table class="adminlist">
 <thead>
     <tr>
         <th width="10"></th>
-        <th width="2%">
-            <?= @text('ID'); ?>
-        </th>
+        <th width="50"></th>
         <th>
             <?= @helper('grid.sort', array('column' => 'Title')); ?>
         </th>
@@ -48,7 +49,7 @@
             <?= @helper('grid.checkbox' , array('row' => $team)) ?>
         </td>
         <td align="center">
-            <?= @escape($team->id) ?>
+            <img src="<?= @escape($site.$team->logo) ?>" alt="<?= @escape($team->title) ?>" title="<?= @escape($team->title) ?>" width="40" height="40" />
         </td>
         <td>
             <a href="<?= @route('view=team&id='.$team->id) ?>">
