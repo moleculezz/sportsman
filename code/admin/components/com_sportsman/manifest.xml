@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+    <name>Sportsman</name>
+    <author>G.D. Arends</author>
+    <creationDate>2011-11-01 00:00</creationDate>
+    <copyright>(C) G.D. Arends. All rights reserved.</copyright>
+    <license>GNU/GPLv3</license>
+    <version status="beta">0.1.0</version>
+    <description>Sports club manager extension</description>
+    
+    <administration>
+        <submenu>
+            <menu view="dashboard">Dashboard</menu>
+            <menu view="teams">Teams</menu>
+            <menu view="tournaments">Tournaments</menu>
+            <menu view="games">Games</menu>
+            <menu view="divisions">Divisions</menu>
+            <menu view="sports">Sports</menu>
+        </submenu>
+    </administration>
+</install>
