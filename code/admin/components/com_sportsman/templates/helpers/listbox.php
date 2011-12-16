@@ -16,12 +16,12 @@
  */
 class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
 {
+    //TODO Copying koowa/template/helper/listbox.php function doesn't seem like the best way
     protected function _listbox($config = array())
  	{
- 	    $config = new KConfig($config);
+		$config = new KConfig($config);
 		$config->append(array(
 			'name'		  => '',
-			'filter' 	  => array(),
 			'attribs'	  => array(),
 			'model'		  => KInflector::pluralize($this->getIdentifier()->package),
 		    'prompt'      => '- Select -', 
@@ -35,10 +35,10 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
 			'column'    => $config->value,
 			'deselect'  => true,
 		))->append(array(
-		    'sort'	    => $config->text,
+		    'filter' 	=> array('sort' => $config->text),
 		));
 		
-		$list = KService::get($config->identifier)->limit(0)->set($config->filter)->sort($config->sort)->getList();
+		$list = $this->getService($config->identifier)->set($config->filter)->getList();
 		
 		//Get the list of items
  	    $items = $list->getColumn($config->value);
@@ -65,7 +65,7 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
             }
             $options[] =  $this->option(
                 array(
-                    'text'    => $item->{$config->text}, 
+                    'text'    => $item->{$config->text},
                     'value'   => $item->{$config->value},
                     'attribs' => $optdata
                 )
