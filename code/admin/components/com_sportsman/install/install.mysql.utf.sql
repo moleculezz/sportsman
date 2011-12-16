@@ -111,7 +111,9 @@ INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, 
 INSERT INTO `#__sportsman_clubs` VALUES (1, 'None');
 INSERT INTO `#__sportsman_clubs` VALUES (2, 'Club');
 
-INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98)
+INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98);
+
+INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-files', 'Container for sportsman', 'images/sportsman', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title

@@ -71,7 +71,7 @@ function insertImageUrl ( image ) {
         <?= @helper('com://admin/files.template.helper.modal.select', array(
             'name' => 'logo', 
             'value' => $team->logo, 
-            'link' => @route('option=com_files&view=images&layout=select&tmpl=component')
+            'link' => @route('option=com_sportsman&view=upload&layout=select&tmpl=component')
         )); ?>
             
         </div>
