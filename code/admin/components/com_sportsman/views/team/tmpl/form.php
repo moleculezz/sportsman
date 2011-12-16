@@ -77,7 +77,7 @@ function insertImageUrl ( image ) {
         </div>
         <div class="panel folders group">
             <h3><?= @text('Divisions') ?></h3>
-            <?= @template('form_divisions', array('list' => KFactory::get('com://admin/sportsman.model.divisions')->getDivisions())) ?>
+            <?= @template('form_divisions', array('list' => @service('com://admin/sportsman.model.divisions')->getDivisions())) ?>
         </div>
     </div>
 </form>
