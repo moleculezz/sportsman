@@ -75,7 +75,7 @@ jQuery(function($) {
             dataType: 'json',
             success: function(data) {
                 
-                printTeams(data, $teams); // populate the teams list
+                printTeams(data.items, $teams); // populate the teams list
                 
                 // let the team items be draggable
                 $( '.drop li').draggable({
