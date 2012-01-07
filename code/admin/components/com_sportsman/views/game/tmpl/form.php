@@ -269,7 +269,7 @@ jQuery(function($) {
                         <label for="venue"><?= @text('Venue') ?></label>
                     </td>
                     <td>
-                        <input class="inputbox required" type="text" name="venue" id="venue" size="25" maxlength="255" value="<?= @escape($game->venue) ?>" />
+                        <?=@helper('listbox.venues', array('name' => 'sportsman_venue_id')); ?>
                     </td>
                 </tr>
             </table>

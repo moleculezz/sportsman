@@ -60,7 +60,7 @@
             <?= @escape($game->away_team_title) ?> (<?= @escape($game->away_team_score) ?>)
         </td>
         <td align="center">
-            <?= @escape($game->venue) ?>
+            <?= @escape($game->venue_title) ?>
         </td>
     </tr>
 <? endforeach; ?>

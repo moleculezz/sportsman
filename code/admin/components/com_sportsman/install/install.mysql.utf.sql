@@ -37,6 +37,13 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_clubs` (
   PRIMARY KEY ( `sportsman_club_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `#__sportsman_venues` (
+  `sportsman_venue_id` bigint(20) UNSIGNED NOT NULL auto_increment,
+  `sportsman_club_id` bigint(20) UNSIGNED NULL,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY ( `sportsman_venue_id` )
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
   `sportsman_team_id` bigint(20) UNSIGNED NOT NULL,
   `sportsman_member_id` bigint(20) UNSIGNED NOT NULL,
@@ -53,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_tournament_id` bigint(20) UNSIGNED NOT NULL,
   `sportsman_home_team_id` bigint(20) UNSIGNED NOT NULL,
   `sportsman_away_team_id` bigint(20) UNSIGNED NOT NULL,
-  `venue` varchar(255) NOT NULL,
+  `sportsman_venue_id` bigint(20) UNSIGNED NOT NULL,
   `game_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `home_team_score` tinyint(3) NOT NULL,
   `away_team_score` tinyint(3) NOT NULL,
@@ -112,6 +119,8 @@ INSERT INTO `#__sportsman_teams` (`sportsman_team_id`, `sportsman_division_id`, 
 INSERT INTO `#__sportsman_clubs` VALUES (1, 'None');
 INSERT INTO `#__sportsman_clubs` VALUES (2, 'Club');
 
+INSERT INTO `#__sportsman_venues` VALUES (1, NULL, 'None');
+
 INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98);
 
 INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-files', 'Container for sportsman', 'images/sportsman', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
@@ -137,11 +146,13 @@ CREATE OR REPLACE VIEW `#__sportsman_view_tournaments` AS
 CREATE OR REPLACE VIEW `#__sportsman_view_games` AS
   SELECT tbl.*, h.title AS home_team_title, h.sportsman_club_id AS home_team_club_id,
     a.title AS away_team_title, a.sportsman_club_id AS away_team_club_id,
-    t.title AS tournament_title, d.sportsman_division_id, d.title AS division_title, s.sportsman_sport_id, s.title AS sports_title
+    t.title AS tournament_title, d.sportsman_division_id, d.title AS division_title, s.sportsman_sport_id, s.title AS sports_title,
+    v.title AS venue_title
   FROM `#__sportsman_games` AS tbl 
   LEFT OUTER JOIN `#__sportsman_teams` AS h ON h.sportsman_team_id = tbl.home_team_id
   LEFT OUTER JOIN `#__sportsman_teams` AS a ON a.sportsman_team_id = tbl.away_team_id 
   LEFT JOIN `#__sportsman_tournaments` AS t ON tbl.sportsman_tournament_id = t.sportsman_tournament_id
+  LEFT JOIN `#__sportsman_venues` AS v ON tbl.sportsman_venue_id = v.sportsman_venue_id
   LEFT JOIN `#__sportsman_divisions` AS d ON h.sportsman_division_id = d.sportsman_division_id
   LEFT JOIN `#__sportsman_sports` AS s ON d.sportsman_sport_id = s.sportsman_sport_id
 

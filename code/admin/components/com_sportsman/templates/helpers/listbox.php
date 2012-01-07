@@ -106,6 +106,20 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         return parent::_listbox($config);
     }
     
+    public function venues( $config = array())
+    {
+        $config = new KConfig($config);
+        $config->append(array(
+            'model'    => 'venues',
+            'name'     => 'sportsman_venue_id',
+            'value'    => 'id',
+            'text'     => 'title',
+            'prompt'   => '- Select Venue -',
+            'attribs'  => array('id' => $config->name)
+        ));
+        return parent::_listbox($config);
+    }
+    
     public function tournaments( $config = array())
     {
         $config = new KConfig($config);
