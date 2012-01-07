@@ -228,7 +228,7 @@ jQuery(function($) {
                 </div>
                 <!-- <label for="home_team_score"><?php //@text('Score') ?></label> -->
                 <input class="inputbox required" type="text" name="home_team_score" id="home_team_score" size="5" maxlength="3" value="<?= @escape($game->home_team_score) ?>" placeholder="Score" />
-                <input type="hidden" name="home_team_id" id="home_team_id" value="0" class="team_id" />
+                <input type="hidden" name="home_team_id" id="home_team_id" value="<?= $game->home_team_id ?>" class="team_id" />
             </div>
         </div>
         <div class="grid_2">
@@ -248,7 +248,7 @@ jQuery(function($) {
                 </div>
                 <!-- <label for="away_team_score"><?php //@text('Score') ?></label> -->
                 <input class="inputbox required" type="text" name="away_team_score" id="away_team_score" size="5" maxlength="3" value="<?= @escape($game->away_team_score) ?>" placeholder="Score" />
-                <input type="hidden" name="away_team_id" id="away_team_id" value="0" class="team_id" />
+                <input type="hidden" name="away_team_id" id="away_team_id" value="<?= $game->away_team_id ?>" class="team_id" />
             </div>
         </div>
     </div>
