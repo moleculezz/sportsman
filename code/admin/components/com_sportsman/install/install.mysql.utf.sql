@@ -130,6 +130,11 @@ CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   FROM `#__sportsman_divisions` AS tbl
   LEFT JOIN `#__sportsman_sports` AS s ON s.sportsman_sport_id = tbl.sportsman_sport_id;
   
+CREATE OR REPLACE VIEW `#__sportsman_view_venues` AS
+  SELECT tbl.*, c.title AS club_title
+  FROM `#__sportsman_venues` AS tbl
+  LEFT JOIN `#__sportsman_clubs` AS s ON c.sportsman_club_id = tbl.sportsman_club_id;
+  
 CREATE OR REPLACE VIEW `#__sportsman_view_teams` AS
   SELECT tbl.*, d.title AS division_title, s.title AS sport_title, c.title AS club_title, s.sportsman_sport_id
   FROM `#__sportsman_teams` AS tbl
