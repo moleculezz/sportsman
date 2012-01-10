@@ -12,6 +12,7 @@
         <submenu>
             <menu view="dashboard">Dashboard</menu>
             <menu view="teams">Teams</menu>
+            <menu view="venues">Venues</menu>
             <menu view="tournaments">Tournaments</menu>
             <menu view="games">Games</menu>
             <menu view="divisions">Divisions</menu>
