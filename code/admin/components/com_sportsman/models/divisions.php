@@ -30,14 +30,15 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
     {
         $state = $this->_state;
         
-        if(is_numeric($state->access)) {
-        	$query->where('tbl.access','=', $state->access);
+        if(!$state->isUnique()) {
+            if(is_numeric($state->access)) {
+            	$query->where('tbl.access','=', $state->access);
+            }
+            
+            if(is_numeric($state->enabled)) {
+            	$query->where('tbl.enabled','=', $state->enabled);
+            }
         }
-        
-        if(is_numeric($state->enabled)) {
-        	$query->where('tbl.enabled','=', $state->enabled);
-        }
-        
         if (is_numeric($state->sport)) {
             $query->where('tbl.sportsman_sport_id', '=', $state->sport);
         }

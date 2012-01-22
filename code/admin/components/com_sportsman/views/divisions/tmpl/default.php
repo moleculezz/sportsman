@@ -54,7 +54,7 @@
             <?= @escape($division->id) ?>
         </td>
         <td>
-            <a href="<?= @route('view=division&enabled='.$division->enabled.'&id='.$division->id) ?>">
+            <a href="<?= @route('view=division&id='.$division->id) ?>">
                 <?= @escape($division->title) ?>
             </a>
         </td>
