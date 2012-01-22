@@ -38,9 +38,10 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
             if(is_numeric($state->enabled)) {
             	$query->where('tbl.enabled','=', $state->enabled);
             }
-        }
-        if (is_numeric($state->sport)) {
-            $query->where('tbl.sportsman_sport_id', '=', $state->sport);
+            
+            if (is_numeric($state->sport)) {
+                $query->where('tbl.sportsman_sport_id', '=', $state->sport);
+            }
         }
         
         parent::_buildQueryWhere($query);
