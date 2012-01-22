@@ -1,6 +1,7 @@
 
 <?= @template('default_sidebar') ?>
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
+<?= @template('default_filter'); ?>
 <table class="adminlist">
 <thead>
     <tr>
@@ -11,11 +12,11 @@
         <th>
             <?= @helper('grid.sort', array('column' => 'Title')); ?>
         </th>
-        <th width="7%">
-            <?= @helper('grid.sort', array('column' => 'enabled')) ?>
-        </th>
         <th width="10%">
             <?= @text('Created on'); ?>
+        </th>
+        <th width="10%">
+            <?= @text('Ended on'); ?>
         </th>
     </tr>
     <tr>
@@ -47,15 +48,15 @@
             <?= @escape($tournament->id) ?>
         </td>
         <td>
-            <a href="<?= @route('view=tournament&id='.$tournament->id) ?>">
+            <a href="<?= @route('view=tournament&active=&id='.$tournament->id) ?>">
                 <?= @escape($tournament->title) ?>
             </a>
         </td>
         <td align="center">
-            <?= @helper('grid.enable', array('row' => $tournament)) ?>
+            <?= @helper('date.format', array('date' => $tournament->created_on, 'format' => '%#d %B %Y')) ?>
         </td>
         <td align="center">
-            <?= @helper('date.format', array('date' => $tournament->created_on, 'format' => '%#d %B %Y')) ?>
+            <?= $tournament->ended_on != '0000-00-00 00:00:00' ? @helper('date.format', array('date' => $tournament->ended_on, 'format' => '%#d %B %Y')) : '' ?>
         </td>
     </tr>
 <? endforeach; ?>

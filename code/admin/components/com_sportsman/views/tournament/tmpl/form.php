@@ -4,7 +4,7 @@ defined('KOOWA') or die('Restricted access') ?>
 
 <style src="media://system/css/calendar-jos.css" />
 
-<form action="<?= @route('id='.$tournament->id) ?>" method="post" id="division-form" class="-koowa-form">
+<form action="<?= @route('id='.$tournament->id.'&active='.$tournament->active) ?>" method="post" id="division-form" class="-koowa-form">
     <div class="grid_8">
         <div class="panel title group">
             <input class="inputbox required" type="text" name="title" id="title" size="40" maxlength="255" value="<?= @escape($tournament->title) ?>" placeholder="<?= @text('Name') ?>" />

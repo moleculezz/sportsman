@@ -21,7 +21,7 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
         parent::__construct($config);
         
         $this->_state
-            ->insert('enabled' , 'int')
+            ->insert('active' , 'boolean', true)
             ->insert('division', 'int')
             ->insert('sport'   , 'int');
     }
@@ -30,8 +30,13 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
     {
         $state = $this->_state;
         
-        if (is_numeric($state->enabled)) {
-            $query->where('tbl.enabled','=', $state->enabled);
+        if (is_bool($state->active) && $state->active) {
+            $query->where('tbl.ended_on','=', '0000-00-00 00:00:00')
+                    ->where('tbl.ended_on','>', date("Y-m-d H:i:s"), 'OR');
+        }
+        else if (is_bool($state->active) && !$state->active) {
+            $query->where('tbl.ended_on','!=', '0000-00-00 00:00:00')
+                    ->where('tbl.ended_on','<', date("Y-m-d H:i:s") );
         }
         
         if (is_numeric($state->division)) {

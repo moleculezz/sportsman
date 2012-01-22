@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
   `sportsman_tournament_id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `sportsman_division_id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_tournament_id` )
@@ -123,7 +122,7 @@ INSERT INTO `#__sportsman_venues` VALUES (1, NULL, 'None');
 
 INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98);
 
-INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-files', 'Container for sportsman', 'images/sportsman', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
+INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-team-logos', 'Container for sportsman team logos', 'images/sportsman/teams/logo', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title
