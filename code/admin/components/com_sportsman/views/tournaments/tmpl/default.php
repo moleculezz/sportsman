@@ -48,7 +48,7 @@
             <?= @escape($tournament->id) ?>
         </td>
         <td>
-            <a href="<?= @route('view=tournament&active=&id='.$tournament->id) ?>">
+            <a href="<?= @route('view=tournament&id='.$tournament->id) ?>">
                 <?= @escape($tournament->title) ?>
             </a>
         </td>

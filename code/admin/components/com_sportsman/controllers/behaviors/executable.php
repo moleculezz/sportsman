@@ -27,6 +27,12 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
                 return false;
             }
         }
+        if($this->getMixer()->getIdentifier()->name == 'tournament') {
+            
+            if($user->gid == 18 && !$item->active) {
+                return false;
+            }
+        }
         return true;
     }
     
@@ -38,6 +44,12 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         if($this->getMixer()->getIdentifier()->name == 'division') {
             
             if($user->gid == 18 && !$item->enabled) {
+                return false;
+            }
+        }
+        if($this->getMixer()->getIdentifier()->name == 'tournament') {
+            
+            if($user->gid == 18 && !$item->active) {
                 return false;
             }
         }
@@ -55,6 +67,12 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
                 return false;
             }
         }
+        if($this->getMixer()->getIdentifier()->name == 'tournament') {
+            
+            if($user->gid == 18 && !$item->active) {
+                return false;
+            }
+        }
         return true;
     }
     
@@ -69,6 +87,12 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
                 return false;
             }
         }
+        if($this->getMixer()->getIdentifier()->name == 'tournament') {
+            
+            if($user->gid == 18 && !$item->active) {
+                return false;
+            }
+        }
         return true;
     }
     
@@ -80,6 +104,12 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         if($this->getMixer()->getIdentifier()->name == 'division') {
             
             if($user->gid == 18 && !$item->enabled) {
+                return false;
+            }
+        }
+        if($this->getMixer()->getIdentifier()->name == 'tournament') {
+            
+            if($user->gid == 18 && !$item->active) {
                 return false;
             }
         }
