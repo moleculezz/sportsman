@@ -32,6 +32,12 @@ class ComSportsmanModelVenues extends ComDefaultModelDefault
             $query->where('tbl.sportsman_club_id', '=', $state->club);
         }
         
+        if ($state->search) {
+            $search = '%'.$state->search.'%';
+            $query->where('tbl.title', 'LIKE', $search)
+                    ->where('tbl.club_title', 'LIKE', '%'.$state->search.'%', 'OR');
+        }
+        
         parent::_buildQueryWhere($query);
     }
 }
