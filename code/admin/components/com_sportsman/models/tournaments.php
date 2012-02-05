@@ -56,9 +56,7 @@ class ComSportsmanModelTournaments extends ComDefaultModelDefault
     public function getDivisions()
     {
         
-        $list = $this
-            ->set('enabled', 1)
-            ->getList();
+        $list = $this->getList();
 
         foreach($list as $item)
         {
