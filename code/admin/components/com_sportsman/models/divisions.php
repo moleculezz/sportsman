@@ -32,16 +32,21 @@ class ComSportsmanModelDivisions extends ComDefaultModelDefault
         
         if(!$state->isUnique()) {
             if(is_numeric($state->access)) {
-            	$query->where('tbl.access','=', $state->access);
+                $query->where('tbl.access','=', $state->access);
             }
             
             if(is_numeric($state->enabled)) {
-            	$query->where('tbl.enabled','=', $state->enabled);
+                $query->where('tbl.enabled','=', $state->enabled);
             }
             
             if (is_numeric($state->sport)) {
                 $query->where('tbl.sportsman_sport_id', '=', $state->sport);
             }
+        }
+        
+        if ($state->search) {
+            $search = '%'.$state->search.'%';
+            $query->where('tbl.title', 'LIKE', $search);
         }
         
         parent::_buildQueryWhere($query);
