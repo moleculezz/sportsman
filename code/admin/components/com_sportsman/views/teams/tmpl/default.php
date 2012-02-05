@@ -4,6 +4,7 @@ $site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
 ?>
 <?= @template('default_sidebar') ?>
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
+<?= @template('default_filter'); ?>
 <table class="adminlist">
 <thead>
     <tr>
@@ -15,11 +16,11 @@ $site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
         <th>
             <?= @text('Sponsor'); ?>
         </th>
-        <th width="7%">
-            <?= @helper('grid.sort', array('column' => 'enabled')) ?>
-        </th>
         <th width="10%">
             <?= @text('Created on'); ?>
+        </th>
+        <th width="10%">
+            <?= @text('Ended on'); ?>
         </th>
     </tr>
     <tr>
@@ -60,10 +61,10 @@ $site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
             <?= @escape($team->sponsor) ?>
         </td>
         <td align="center">
-            <?= @helper('grid.enable', array('row' => $team)) ?>
+            <?= @helper('date.format', array('date' => $team->created_on, 'format' => '%#d %B %Y')) ?>
         </td>
         <td align="center">
-            <?= @helper('date.format', array('date' => $team->created_on, 'format' => '%#d %B %Y')) ?>
+            <?= $team->ended_on != '0000-00-00 00:00:00' ? @helper('date.format', array('date' => $team->ended_on, 'format' => '%#d %B %Y')) : '' ?>
         </td>
     </tr>
 <? endforeach; ?>

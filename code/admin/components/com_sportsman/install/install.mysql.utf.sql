@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `sponsor` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL DEFAULT 'media/com_sportsman/images/default_logo.png',
   `photo` varchar(255) NOT NULL DEFAULT 'media/com_sportsman/images/team_photo.jpg',
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_team_id` )

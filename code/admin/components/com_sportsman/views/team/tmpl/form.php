@@ -49,16 +49,6 @@ function insertImageUrl ( image ) {
                 </tr>
                 <tr>
                     <td class="key">
-                        <label for="enabled">
-                            <?= @text( 'Published' ) ?>:
-                        </label>
-                    </td>
-                    <td>
-                        <?= @helper('select.booleanlist', array('name' => 'enabled', 'selected' => $team->enabled)) ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="key">
                         <label for="created_on"><?= @text('Created on') ?></label>
                     </td>
                     <td>
