@@ -21,17 +21,8 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
         
-        if($this->getMixer()->getIdentifier()->name == 'division') {
-            
-            if($user->gid == 18 && !$item->enabled) {
-                return false;
-            }
-        }
-        if($this->getMixer()->getIdentifier()->name == 'tournament') {
-            
-            if($user->gid == 18 && !$item->active) {
-                return false;
-            }
+        if($user->gid == 18 && !$item->enabled) {
+            return false;
         }
         return true;
     }
@@ -41,18 +32,10 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
         
-        if($this->getMixer()->getIdentifier()->name == 'division') {
-            
-            if($user->gid == 18 && !$item->enabled) {
-                return false;
-            }
+        if($user->gid == 18 && !$item->enabled) {
+            return false;
         }
-        if($this->getMixer()->getIdentifier()->name == 'tournament') {
-            
-            if($user->gid == 18 && !$item->active) {
-                return false;
-            }
-        }
+
         return true;
     }
     
@@ -61,17 +44,8 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
         
-        if($this->getMixer()->getIdentifier()->name == 'division') {
-            
-            if($user->gid == 18 && !$item->enabled) {
-                return false;
-            }
-        }
-        if($this->getMixer()->getIdentifier()->name == 'tournament') {
-            
-            if($user->gid == 18 && !$item->active) {
-                return false;
-            }
+        if($user->gid == 18 && !$item->enabled) {
+            return false;
         }
         return true;
     }
@@ -81,17 +55,8 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
         
-        if($this->getMixer()->getIdentifier()->name == 'division') {
-            
-            if($user->gid == 18 && !$item->enabled) {
-                return false;
-            }
-        }
-        if($this->getMixer()->getIdentifier()->name == 'tournament') {
-            
-            if($user->gid == 18 && !$item->active) {
-                return false;
-            }
+        if($user->gid == 18 && !$item->enabled) {
+            return false;
         }
         return true;
     }
@@ -101,17 +66,8 @@ class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehav
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
         
-        if($this->getMixer()->getIdentifier()->name == 'division') {
-            
-            if($user->gid == 18 && !$item->enabled) {
-                return false;
-            }
-        }
-        if($this->getMixer()->getIdentifier()->name == 'tournament') {
-            
-            if($user->gid == 18 && !$item->active) {
-                return false;
-            }
+        if($user->gid == 18 && !$item->enabled) {
+            return false;
         }
         return true;
     }
