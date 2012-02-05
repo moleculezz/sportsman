@@ -49,10 +49,10 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
             }
         }
         
-        if ($state->search)
-        {
+        if ($state->search) {
             $search = '%'.$state->search.'%';
-            $query->where('tbl.title', 'LIKE', $search);
+            $query->where('tbl.title', 'LIKE', $search)
+                    ->where('tbl.sponsor', 'LIKE', '%'.$state->search.'%', 'OR');
         }
         
         parent::_buildQueryWhere($query);
@@ -62,19 +62,17 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
     // Only divisions that contain teams
     public function getDivisions()
     {
-        
-        $list = $this
-            ->set('enabled', 1)
-            ->getList();
+        // get active teams
+        $teams = $this->getList();
 
-        foreach($list as $item)
+        foreach($teams as $team)
         {
-            if(!isset($divisions[$item->sportsman_sport_id])) {
-                $divisions[$item->sportsman_sport_id]['title'] = $item->sport_title;
+            if(!isset($divisions[$team->sportsman_sport_id])) {
+                $divisions[$team->sportsman_sport_id]['title'] = $team->sport_title;
             }
             
-            if(!isset($divisions[$item->sportsman_sport_id]['divisions'][$item->sportsman_division_id])) {
-                $divisions[$item->sportsman_sport_id]['divisions'][$item->sportsman_division_id] = array('title' => $item->division_title);
+            if(!isset($divisions[$team->sportsman_sport_id]['divisions'][$team->sportsman_division_id])) {
+                $divisions[$team->sportsman_sport_id]['divisions'][$team->sportsman_division_id] = array('title' => $team->division_title);
             }
         }
 
