@@ -32,8 +32,9 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         
         if(!$state->isUnique()) {
             if (is_bool($state->active) && $state->active) {
-                $query->where('tbl.ended_on','=', '0000-00-00 00:00:00')
+                $query->where('( tbl.ended_on','=', '0000-00-00 00:00:00')
                         ->where('tbl.ended_on','>', date("Y-m-d H:i:s"), 'OR');
+                $query->where[] = array('condition' => ')', 'property' => null);
             }
             else if (is_bool($state->active) && !$state->active) {
                 $query->where('tbl.ended_on','!=', '0000-00-00 00:00:00')
