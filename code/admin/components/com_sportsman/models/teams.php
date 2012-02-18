@@ -50,9 +50,10 @@ class ComSportsmanModelTeams extends ComDefaultModelDefault
         }
         
         if ($state->search) {
-            $search = '%'.$state->search.'%';
-            $query->where('tbl.title', 'LIKE', $search)
-                    ->where('tbl.sponsor', 'LIKE', '%'.$state->search.'%', 'OR');
+            $query
+                ->where('( tbl.title', 'LIKE', '%' . $state->search . '%', 'AND')
+                ->where('tbl.sponsor', 'LIKE', '%' . $state->search . '%', 'OR');
+            $query->where[] = array('condition' => ')', 'property' => null);
         }
         
         parent::_buildQueryWhere($query);
