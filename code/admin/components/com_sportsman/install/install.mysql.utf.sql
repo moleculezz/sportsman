@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_venues` (
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
   `sportsman_team_id` bigint(20) UNSIGNED NOT NULL,
   `sportsman_member_id` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY ( `sportsman_team_id`, `sportsman_member_id )
+  PRIMARY KEY ( `sportsman_team_id`, `sportsman_member_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_members` (
