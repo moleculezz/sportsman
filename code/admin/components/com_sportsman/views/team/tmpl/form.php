@@ -17,6 +17,9 @@ function insertImageUrl ( image ) {
 }
 
 </script>
+
+<?= @template('com://admin/default.view.form.toolbar'); ?>
+
 <form action="<?= @route('id='.$team->id) ?>" method="post" id="division-form" class="-koowa-form">
     <div class="grid_8">
         <div class="team_images">

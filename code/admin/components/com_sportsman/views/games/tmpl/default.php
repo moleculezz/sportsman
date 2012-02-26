@@ -1,4 +1,7 @@
+
 <style src="media://com_sportsman/css/sportsman.css" />
+
+<?= @template('com://admin/default.view.grid.toolbar'); ?>
 <?= @template('default_sidebar') ?>
 <form action="<?= @route() ?>" method="get" class="-koowa-grid">
 <table class="adminlist">

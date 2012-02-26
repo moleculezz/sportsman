@@ -202,6 +202,8 @@ jQuery(function($) {
 });
 </script>
 
+<?= @template('com://admin/default.view.form.toolbar'); ?>
+
 <form action="<?= @route('id='.$game->id) ?>" method="post" id="game-form" class="-koowa-form">
     <div class="grid_8" id="game-container">
         <div class="grid_12 panel title group tournament">

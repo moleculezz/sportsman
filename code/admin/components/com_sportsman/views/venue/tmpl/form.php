@@ -4,6 +4,8 @@ defined('KOOWA') or die('Restricted access') ?>
 
 <style src="media://system/css/calendar-jos.css" />
 
+<?= @template('com://admin/default.view.form.toolbar'); ?>
+
 <form action="<?= @route('id='.$venue->id) ?>" method="post" id="venue-form" class="-koowa-form">
     <div class="grid_8">
         <div class="panel title group">
