@@ -49,11 +49,6 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
   PRIMARY KEY ( `sportsman_team_id`, `sportsman_member_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `#__sportsman_members` (
-  `sportsman_member_id` bigint(20) UNSIGNED NOT NULL auto_increment,
-  PRIMARY KEY ( `sportsman_member_id` )
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `sportsman_tournament_id` bigint(20) UNSIGNED NOT NULL,
@@ -74,6 +69,25 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_tournament_id` )
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `#__users` ENGINE=InnoDB
+
+CREATE TABLE IF NOT EXISTS `#__users_members` (
+  `id` int(11) NOT NULL,
+  `dob` date NOT NULL,
+  `gender` char(1) NOT NULL,
+  `address` varchar(60) NOT NULL,
+  `city` varchar(60) NOT NULL,
+  `photo` varchar(60) DEFAULT 'media/com_profiles/images/unknown_person.gif',
+  `ended_on` datetime NULL DEFAULT NULL,
+  `reason_ended` varchar(100) NULL DEFAULT NULL,
+  PRIMARY KEY ( `id` ),
+  CONSTRAINT `fk_id` 
+    FOREIGN KEY (`id`) 
+    REFERENCES `#__users` (`id`)
+    ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_basketballstats` (
   `sportsman_basketballstat_id` bigint(20) UNSIGNED NOT NULL auto_increment,
@@ -122,6 +136,8 @@ INSERT INTO `#__sportsman_venues` VALUES (1, NULL, 'None');
 INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 19:00:00', 102, 98);
 
 INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-team-logos', 'Container for sportsman team logos', 'images/sportsman/teams/logo', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
+
+INSERT INTO `#__users_members` VALUES ('62', '1982-07-31', 'M', 'Hooistraat 120', 'Leiden', 'media/com_profiles/images/unknown_person.gif', NULL, NULL );
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title

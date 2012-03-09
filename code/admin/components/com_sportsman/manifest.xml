@@ -11,6 +11,7 @@
     <administration>
         <submenu>
             <menu view="dashboard">Dashboard</menu>
+            <menu view="members">Members</menu>
             <menu view="teams">Teams</menu>
             <menu view="venues">Venues</menu>
             <menu view="tournaments">Tournaments</menu>
