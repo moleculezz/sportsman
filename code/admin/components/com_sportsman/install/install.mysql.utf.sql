@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-ALTER TABLE `#__users` ENGINE=InnoDB
+ALTER TABLE `#__users` ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `#__users_members` (
   `id` int(11) NOT NULL,
