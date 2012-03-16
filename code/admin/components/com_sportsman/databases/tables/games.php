@@ -21,9 +21,14 @@ class ComSportsmanDatabaseTableGames extends KDatabaseTableAbstract
         $config->append(array(
             'name'       => 'sportsman_view_games',
             'base'       => 'sportsman_games',
-            'behaviors'  => array('creatable', 'modifiable', 'identifiable')
+            'behaviors'  => array(
+                'creatable',
+                'modifiable',
+                'identifiable',
+                'com://admin/versions.database.behavior.revisable'
+            )
         ));
-
+        
         parent::_initialize($config);
     }
 }

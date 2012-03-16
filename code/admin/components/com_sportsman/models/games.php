@@ -21,7 +21,8 @@ class ComSportsmanModelGames extends ComDefaultModelDefault
         parent::__construct($config);
         
         $this->_state
-            ->insert('tournament', 'int');
+            ->insert('tournament', 'int')
+            ->insert('trashed'   , 'int');
     }
     
     protected function _buildQueryWhere(KDatabaseQuery $query)
@@ -30,6 +31,10 @@ class ComSportsmanModelGames extends ComDefaultModelDefault
         
         if (is_numeric($state->tournament)) {
             $query->where('tbl.sportsman_tournament_id','=', $state->tournament);
+        }
+        
+        if($this->getTable()->isRevisable() && $state->trashed) {
+            $query->where('tbl.deleted', '=', 1);
         }
         
         parent::_buildQueryWhere($query);

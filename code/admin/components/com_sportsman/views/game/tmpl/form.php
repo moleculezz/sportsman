@@ -276,5 +276,14 @@ jQuery(function($) {
                 </tr>
             </table>
         </div>
+        
+        <? if($game->isRevisable()) : ?>
+            <div class="panel">
+            <h3><?= @text( 'Revisions' ); ?></h3>
+                <? if(!$game->isNew()) : ?>
+                    <?= @overlay(array('url'=>@route('option=com_versions&view=revisions&row='.$game->id.'&table=sportsman_view_games&layout=list#revisions-list')))?>
+                <? endif; ?>
+            </div>
+        <? endif; ?>
     </div>
 </form>
