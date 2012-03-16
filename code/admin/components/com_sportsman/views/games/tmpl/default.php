@@ -53,9 +53,13 @@
             <?= @escape($game->id) ?>
         </td>
         <td align="center">
+        <?php if($game->getStatus() != 'deleted') : ?>
             <a href="<?= @route('view=game&id='.$game->id) ?>">
                 <?= @helper('date.format', array('date' => $game->game_time, 'format' => '%#d %B %Y')) ?>
             </a>
+        <?php else: ?>
+            <?= @helper('date.format', array('date' => $game->game_time, 'format' => '%#d %B %Y')) ?>
+        <?php endif ?>
         </td>
         <td align="center" <?php if($game->home_team_score > $game->away_team_score) echo 'class="game-win"';?> >
             <?= @escape($game->home_team_title) ?> (<?= @escape($game->home_team_score) ?>)
