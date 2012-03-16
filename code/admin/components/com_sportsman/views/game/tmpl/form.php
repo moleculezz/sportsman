@@ -100,7 +100,7 @@ jQuery(function($) {
         });
     }
     
-    function printTeams ( data ) {
+    function printTeams ( items ) {
         var $drop = $('.drop', $teams);
         var $list = $('ul', $drop);
         if ($list.length) {
@@ -110,19 +110,19 @@ jQuery(function($) {
         var $away = $('.drop ul li', $away_team);
         var home_id = $home.data('team_id');
         var away_id = $away.data('team_id');
-        for(var i = 0; i < data.length; i++) {
+        for(var i = 0; i < items.length; i++) {
             
-            var $li = $('<li class="ui-widget-content ui-corner-tr" data-team_id="'+ data[i].id +'">');
+            var $li = $('<li class="ui-widget-content ui-corner-tr" data-team_id="'+ items[i].data.id +'">');
                     
-            $li.append('<h3 class="ui-widget-header">' + data[i].title + '</h3>')
-            .append('<img src="<?= $site ?>' + data[i].logo + '" alt="' + data[i].title + '" width="64" height="64" />');
+            $li.append('<h3 class="ui-widget-header">' + items[i].data.title + '</h3>')
+            .append('<img src="<?= $site ?>' + items[i].data.logo + '" alt="' + items[i].data.title + '" width="64" height="64" />');
             
-            if( home_id !== '' && String(home_id) === data[i].id ) {
+            if( home_id !== '' && String(home_id) === items[i].data.id ) {
                 $li
                 .append( remove_icon );
                 $home.replaceWith($li);
             }
-            else if ( away_id !== '' && String(away_id) === data[i].id ) {
+            else if ( away_id !== '' && String(away_id) === items[i].data.id ) {
                 $li
                 .append( remove_icon );
                 $away.replaceWith($li);
