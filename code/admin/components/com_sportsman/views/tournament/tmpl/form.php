@@ -2,6 +2,8 @@
 
 defined('KOOWA') or die('Restricted access') ?>
 
+<?= @helper('behavior.validator') ?>
+
 <style src="media://system/css/calendar-jos.css" />
 <style src="media://com_sportsman/css/form.css" />
 <?= @template('com://admin/default.view.form.toolbar'); ?>
