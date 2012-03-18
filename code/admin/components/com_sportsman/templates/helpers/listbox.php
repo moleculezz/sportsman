@@ -16,68 +16,102 @@
  */
 class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
 {
-    //TODO Copying koowa/template/helper/listbox.php function doesn't seem like the best way
-    protected function _listbox($config = array())
- 	{
+	//TODO Remove option when upgrade to 12.3
+	/**
+	 * Generates an HTML select option
+	 *
+	 * @param 	array 	An optional array with configuration options
+	 * @return	string	Html
+	 */
+	public function option( $config = array() )
+	{
 		$config = new KConfig($config);
 		$config->append(array(
-			'name'		  => '',
-			'attribs'	  => array(),
-			'model'		  => KInflector::pluralize($this->getIdentifier()->package),
-		    'prompt'      => '- Select -', 
-		    'unique'	  => true
-		))->append(array(
-			'value'		 => $config->name,
-			'selected'   => $config->{$config->name},
-		    'identifier' => 'com://'.$this->getIdentifier()->application.'/'.$this->getIdentifier()->package.'.model.'.KInflector::pluralize($config->model)
-		))->append(array(
-			'text'		=> $config->value,
-			'column'    => $config->value,
-			'deselect'  => true,
-		))->append(array(
-		    'filter' 	=> array('sort' => $config->text),
+			'value' 	=> null,
+			'text'   	=> '',
+			'disable'	=> false,
+            'group'     => false,
+			'attribs'	=> array(),
+		));
+
+		$option = new stdClass;
+		$option->value 	  = $config->value;
+		$option->text  	  = trim( $config->text ) ? $config->text : $config->value;
+		$option->disable  = $config->disable;
+		$option->group    = $config->group;
+		$option->attribs  = $config->attribs;
+		
+		return $option;
+	}
+	
+	//TODO Remove optionlist when upgrade to 12.3
+	/**
+	 * Generates an HTML select list
+	 *
+	 * @param 	array 	An optional array with configuration options
+	 * @return	string	Html
+	 */
+	public function optionlist($config = array())
+	{
+		$config = new KConfig($config);
+		$config->append(array(
+			'options' 	=> array(),
+			'name'   	=> 'id',
+			'attribs'	=> array('size' => 1),
+			'selected'	=> null,
+			'translate'	=> false
 		));
 		
-		$list = $this->getService($config->identifier)->set($config->filter)->getList();
+		$name    = $config->name;
+		$attribs = KHelperArray::toString($config->attribs);
 		
-		//Get the list of items
- 	    $items = $list->getColumn($config->value);
-		if($config->unique) {
-		    $items = array_unique($items);
+		$html = array();
+		$html[] = '<select name="'. $name .'" '. $attribs .'>';
+		
+		foreach($config->options as $option)
+		{
+			$value  = $option->value;
+			$text   = $config->translate ? JText::_( $option->text ) : $option->text;
+            
+			if ($option->group) {
+			    $html[] = '<optgroup label="'.$text.'">'.$text.'</option>';
+			    continue;
+			}
+			
+			$extra = '';
+			if(isset($option->disable) && $option->disable) {
+				$extra .= 'disabled="disabled"';
+			}
+				
+			if(isset($option->attribs)) {
+				$extra .= ' '.KHelperArray::toString($option->attribs);;
+			}
+			
+			if(!is_null($config->selected))
+			{
+				if ($config->selected instanceof KConfig)
+				{
+					foreach ($config->selected as $selected)
+					{
+						$sel = is_object( $selected ) ? $selected->value : $selected;
+						if ((string) $value == (string) $sel)
+						{
+							$extra .= 'selected="selected"';
+							break;
+						}
+					}
+				} 
+				else $extra .= ((string) $value == (string) $config->selected ? ' selected="selected"' : '');
+			}
+				
+			$html[] = '<option value="'. $value .'" '. $extra .'>' . $text . '</option>';
 		}
-
-		//Compose the options array
-        $options   = array();
- 		if($config->deselect) {
-         	$options[] = $this->option(array('text' => JText::_($config->prompt)));
-        }
 		
-        
-        foreach($items as $key => $value) 
-        {
-            $item      = $list->find($key);
-            $optdata = array();
-            if($config->optdata) {
-                
-                foreach($config->optdata as $key => $val) {
-                    $optdata['data-'.$key] = $item->{$val};
-                }
-            }
-            $options[] =  $this->option(
-                array(
-                    'text'    => $item->{$config->text},
-                    'value'   => $item->{$config->value},
-                    'attribs' => $optdata
-                )
-            );
-        }
-		
-		//Add the options to the config object
-		$config->options = $options;
+		$html[] = '</select>';
 
-		return $this->optionlist($config);
- 	}
- 	
+		return implode(PHP_EOL, $html);
+	}
+
     public function sports( $config = array())
     {
         $config = new KConfig($config);
@@ -120,22 +154,46 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         return parent::_listbox($config);
     }
     
-    public function tournaments( $config = array())
+    public function tournaments($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
-            'model'    => 'tournaments',
-            'name'     => 'sportsman_tournament_id',
-            'value'    => 'id',
-            'text'     => 'title',
-            'optdata' => array('division' => 'sportsman_division_id'),
             'prompt'   => '- Select Tournament -',
-            'attribs'  => array('id' => $config->name)
+            'attribs'  => array('id' => $config->name )
         ));
-        return $this->_listbox($config);
+        
+        $list = $this->getService('com://admin/sportsman.model.tournaments')
+            ->set('active', true)
+            ->getList();
+            
+        
+        foreach($list as $tournament) {
+            //TODO Optimization: Remove loop. Only division and tournament id and titles are needed
+            foreach($tournament->toArray() as $key => $val) {
+                $groups[$tournament->division_title][$tournament->title][$key] = $val;
+            }
+        }
+        
+        foreach($groups as $division => $tournaments) {
+            $options[] = $this->option(array('text' => $division, 'group' => true));
+            foreach($tournaments as $tournament) {
+                $options[] = $this->option(array(
+                    'text'    => $tournament['title'],
+                    'value'   => $tournament['id'],
+                    'attribs' => array(
+                        'data-division' => $this->getTemplate()->getView()->getRoute(
+                            'option=com_sportsman&view=teams&format=json&division='.$tournament['sportsman_division_id']
+                        )
+                    )
+                ));
+            }
+        }
+        $config->append(array('options' => $options));
+        
+        return $this->optionlist($config);
     }
     
-    public function teams( $config = array())
+    public function teams($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(

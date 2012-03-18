@@ -68,9 +68,9 @@ jQuery(function($) {
         }
     }
 
-    function getTeams (id) {
+    function getTeams (url) {
         $.ajax({
-            url: '<?= $admin ?>index.php?option=com_sportsman&view=teams&division='+ id +'&format=json',
+            url: url,
             type: 'get',
             dataType: 'json',
             success: function(data) {
