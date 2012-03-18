@@ -3,7 +3,7 @@
 defined('KOOWA') or die('Restricted access') ?>
 
 <style src="media://system/css/calendar-jos.css" />
-
+<style src="media://com_sportsman/css/form.css" />
 <?= @template('com://admin/default.view.form.toolbar'); ?>
 
 <form action="<?= @route('id='.$tournament->id) ?>" method="post" id="division-form" class="-koowa-form">
@@ -44,7 +44,7 @@ defined('KOOWA') or die('Restricted access') ?>
                 </tr>
             </table>
         </div>
-        <div class="panel folders group">
+        <div class="panel divisions group">
             <h3><?= @text('Divisions') ?></h3>
             <?= @template('form_divisions', array('list' =>  @service('com://admin/sportsman.model.divisions')->getDivisions())) ?>
         </div>

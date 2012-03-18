@@ -28,4 +28,34 @@
 
 .team_images { text-align: right; }
 
+
+
+.panel.divisions {
+    padding-bottom: 14px;
+}
+
+.panel.divisions h3 {
+    margin-bottom: 10px;
+}
+
+.panel.divisions span {
+    padding: 12px 10px 4px 14px;
+    font-weight: bold;
+    clear: left;
+    float: left;
+}
+
+.panel.divisions input,
+.panel.divisions label {
+    margin-top: 8px;
+    float: left;
+}
+
+.panel.divisions input {
+    margin: 9px 5px 0 24px;
+    display: list-item;
+    float: left;
+    clear: left;
+}
+
 /**** nooku overrides ****/
