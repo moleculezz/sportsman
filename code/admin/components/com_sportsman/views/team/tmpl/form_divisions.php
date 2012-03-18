@@ -9,6 +9,7 @@ defined('KOOWA') or die('Restricted access') ?>
             'selected' => $team->sportsman_division_id,
             'name'     => 'sportsman_division_id',
             'text'     => 'title',
+            //'attribs'  => array('class' => 'validate-one-required')
         ));
     ?>
 <? endforeach; ?>

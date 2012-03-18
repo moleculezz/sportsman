@@ -6,6 +6,7 @@ $root = JURI::root(true);
 $site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
 ?>
 <?= @helper('behavior.modal') ?>
+<?= @helper('behavior.validator') ?>
 
 <style src="media://system/css/calendar-jos.css" />
 <style src="media://com_sportsman/css/form.css" />
@@ -39,7 +40,7 @@ function insertImageUrl ( image ) {
                         <label for="club" class="mainlabel"><?= @text('Club'); ?></label>
                     </td>
                     <td>
-                        <?=@helper('listbox.clubs', array('name' => 'sportsman_club_id')); ?>
+                        <?=@helper('listbox.clubs', array('name' => 'sportsman_club_id', 'attribs' => array('class' => 'required'))); ?>
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +48,7 @@ function insertImageUrl ( image ) {
                         <label for="sponsor"><?= @text('Sponsor') ?></label>
                     </td>
                     <td>
-                        <input class="inputbox required" type="text" name="sponsor" id="sponsor" size="25" maxlength="255" value="<?= @escape($team->sponsor) ?>" />
+                        <input class="inputbox" type="text" name="sponsor" id="sponsor" size="25" maxlength="255" value="<?= @escape($team->sponsor) ?>" />
                     </td>
                 </tr>
                 <tr>
@@ -68,7 +69,7 @@ function insertImageUrl ( image ) {
                 </tr>
             </table>
         </div>
-        <div class="panel folders group">
+        <div class="panel group">
         <h3><?= @text( 'Images' ); ?></h3>
         <table class="admintable">
                 <tr>
