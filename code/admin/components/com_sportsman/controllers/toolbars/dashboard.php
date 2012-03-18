@@ -14,7 +14,7 @@
  * @category    Nooku
  * @package     Sportsman 
  */
-class ComSportsmanControllerToolbarDashboard extends ComDefaultControllerToolbarMenubar
+class ComSportsmanControllerToolbarDashboard extends ComDefaultControllerToolbarDefault
 {
     public function getCommands()
     {
