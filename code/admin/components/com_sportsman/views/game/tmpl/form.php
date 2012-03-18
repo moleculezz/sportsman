@@ -6,9 +6,12 @@ $root = JURI::root(true);
 $site = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_FILES).'/';
 $admin = $root.'/'.str_replace(JPATH_ROOT.DS, '', JPATH_ADMINISTRATOR).'/';
 
-//TODO : fix ajax request url & image url?
+//TODO : fix ajax image url?
 //TODO : move js code to file
+//TODO : Validation balloons on hidden fields do not show.
 ?>
+
+<?= @helper('behavior.validator') ?>
 
 <style src="media://system/css/calendar-jos.css" />
 
@@ -201,7 +204,18 @@ jQuery(function($) {
     }
 });
 </script>
-
+<script>
+    if(Form && Form.Validator) {
+        Form.Validator.add('validate-team', {
+            errorMsg: "A team is required",
+            ignoreHidden: false,
+            test: function(element){
+                return Form.Validator.getValidator('required').test(element);
+            }
+        });
+        
+    }
+</script>
 <?= @template('com://admin/default.view.form.toolbar'); ?>
 
 <form action="<?= @route('id='.$game->id) ?>" method="post" id="game-form" class="-koowa-form">
@@ -228,9 +242,9 @@ jQuery(function($) {
                     <?php endif; ?>
                     </ul>
                 </div>
+                <input  class="team_id validate-team" type="hidden" name="home_team_id" id="home_team_id" value="<?= $game->home_team_id ?>" />
                 <!-- <label for="home_team_score"><?php //@text('Score') ?></label> -->
-                <input class="inputbox required" type="text" name="home_team_score" id="home_team_score" size="5" maxlength="3" value="<?= @escape($game->home_team_score) ?>" placeholder="Score" />
-                <input type="hidden" name="home_team_id" id="home_team_id" value="<?= $game->home_team_id ?>" class="team_id" />
+                <input class="inputbox required validate-integer" type="text" name="home_team_score" id="home_team_score" size="5" maxlength="3" value="<?= @escape($game->home_team_score) ?>" placeholder="Score" />
             </div>
         </div>
         <div class="grid_2">
@@ -248,9 +262,9 @@ jQuery(function($) {
                     <?php endif; ?>
                     </ul>
                 </div>
+                <input class="team_id validate-team" type="hidden" name="away_team_id" id="away_team_id" value="<?= $game->away_team_id ?>" />
                 <!-- <label for="away_team_score"><?php //@text('Score') ?></label> -->
-                <input class="inputbox required" type="text" name="away_team_score" id="away_team_score" size="5" maxlength="3" value="<?= @escape($game->away_team_score) ?>" placeholder="Score" />
-                <input type="hidden" name="away_team_id" id="away_team_id" value="<?= $game->away_team_id ?>" class="team_id" />
+                <input class="inputbox required validate-integer" type="text" name="away_team_score" id="away_team_score" size="5" maxlength="3" value="<?= @escape($game->away_team_score) ?>" placeholder="Score" />
             </div>
         </div>
     </div>
@@ -271,7 +285,7 @@ jQuery(function($) {
                         <label for="venue"><?= @text('Venue') ?></label>
                     </td>
                     <td>
-                        <?=@helper('listbox.venues', array('name' => 'sportsman_venue_id')); ?>
+                        <?=@helper('listbox.venues', array('name' => 'sportsman_venue_id', 'attribs' => array('class' => 'required'))); ?>
                     </td>
                 </tr>
             </table>
