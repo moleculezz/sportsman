@@ -2,6 +2,8 @@
 
 defined('KOOWA') or die('Restricted access') ?>
 
+<?= @helper('behavior.validator') ?>
+
 <style src="media://system/css/calendar-jos.css" />
 
 <?= @template('com://admin/default.view.form.toolbar'); ?>
@@ -31,7 +33,7 @@ defined('KOOWA') or die('Restricted access') ?>
                         <label for="sport" class="mainlabel"><?= @text('Sport'); ?></label>
                     </td>
                     <td>
-                        <?=@helper('listbox.sports', array('name' => 'sportsman_sport_id', 'selected' => $division->sportsman_sport_id)); ?>
+                        <?=@helper('listbox.sports', array('name' => 'sportsman_sport_id', 'selected' => $division->sportsman_sport_id, 'attribs' => array('class' => 'required'))); ?>
                     </td>
                 </tr>
                 <tr>
