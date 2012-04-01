@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `#__users_members` (
   `gender` char(1) NOT NULL,
   `address` varchar(60) NOT NULL,
   `city` varchar(60) NOT NULL,
-  `photo` varchar(60) DEFAULT 'media/com_profiles/images/unknown_person.gif',
+  `photo` varchar(60) NOT NULL DEFAULT 'media/com_profiles/images/unknown_person.gif',
   `ended_on` datetime NULL DEFAULT NULL,
   `reason_ended` varchar(100) NULL DEFAULT NULL,
   PRIMARY KEY ( `id` ),
@@ -138,6 +138,9 @@ INSERT INTO `#__sportsman_games` VALUES (1, 1, 6, 'Aruba Juniors', '2011-09-01 1
 INSERT INTO `#__files_containers` VALUES (NULL, 'sportsman-team-logos', 'Container for sportsman team logos', 'images/sportsman/teams/logo', '{\"upload_extensions\":\"jpg,jpeg,png,gif\",\"upload_maxsize\":1048576,\"check_mime\":0}');
 
 INSERT INTO `#__users_members` VALUES ('62', '1982-07-31', 'M', 'Hooistraat 120', 'Leiden', 'media/com_profiles/images/unknown_person.gif', NULL, NULL );
+
+INSERT INTO `#__components` VALUES (34, 'Sportsman', 'option=com_sportsman', 0, 0, 'option=com_sportsman', 'Sportsman', 'com_sportsman', 0, '', 0, '', 1);
+INSERT INTO `#__components` VALUES (NULL, 'Members', '', 0, 34, 'option=com_sportsman&view=members', 'Manage members', '', 2, '', 0, '', 1);
 
 CREATE OR REPLACE VIEW `#__sportsman_view_divisions` AS
   SELECT tbl.*, s.title AS sport_title
