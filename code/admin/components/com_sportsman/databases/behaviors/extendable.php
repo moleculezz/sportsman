@@ -47,7 +47,7 @@ class ComSportsmanDatabaseBehaviorExtendable extends KDatabaseBehaviorAbstract
             $query = $context->query;
             
             if(!is_null($query)){
-                $query->join('LEFT', $tablename.'_'.$this->_extending.' AS members', 'members.'.$this->_table_id.' = tbl.'.$table->get('_identity_column'));
+                $query->join('RIGHT', $tablename.'_'.$this->_extending.' AS members', 'members.'.$this->_table_id.' = tbl.'.$table->get('_identity_column'));
                 $query->select('members.*');
             }
         }
