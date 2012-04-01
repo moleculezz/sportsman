@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_teams` (
   `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `sportsman_team_id` )
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_clubs` (
   `sportsman_club_id` bigint(20) UNSIGNED NOT NULL auto_increment,
@@ -45,9 +45,19 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_venues` (
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_teams_members` (
   `sportsman_team_id` bigint(20) UNSIGNED NOT NULL,
-  `sportsman_member_id` bigint(20) UNSIGNED NOT NULL,
-  PRIMARY KEY ( `sportsman_team_id`, `sportsman_member_id` )
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `users_member_id` int(11) NOT NULL,
+  `type` ENUM('Player', 'Coach', 'Head Coach') NOT NULL DEFAULT 'Player',
+  `jersey_number` TINYINT(2) UNSIGNED NULL,
+  `created_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ended_on` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY ( `sportsman_team_id`, `users_member_id` ),
+  CONSTRAINT `fk_teams_members_member_id` 
+    FOREIGN KEY (`users_member_id`) 
+    REFERENCES `#__users_members` (`users_member_id`),
+  CONSTRAINT `fk_teams_members_team_id` 
+    FOREIGN KEY (`sportsman_team_id`) 
+    REFERENCES `#__sportsman_teams` (`sportsman_team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `#__sportsman_games` (
   `sportsman_game_id` bigint(20) UNSIGNED NOT NULL auto_increment,
@@ -80,12 +90,12 @@ CREATE TABLE IF NOT EXISTS `#__users_members` (
   `address` varchar(60) NOT NULL,
   `city` varchar(60) NOT NULL,
   `photo` varchar(60) NOT NULL DEFAULT 'media/com_profiles/images/unknown_person.gif',
-  `ended_on` datetime NULL DEFAULT NULL,
-  `reason_ended` varchar(100) NULL DEFAULT NULL,
+  `ended_on` datetime NULL DEFAULT '0000-00-00 00:00:00',
+  `reason_ended` varchar(100) NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `users_member_id` ),
   CONSTRAINT `fk_users_member_id` 
     FOREIGN KEY (`users_member_id`) 
-    REFERENCES `jos_users` (`id`)
+    REFERENCES `#__users` (`id`)
     ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
