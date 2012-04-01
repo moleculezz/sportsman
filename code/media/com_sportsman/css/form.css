@@ -58,6 +58,17 @@
     clear: left;
 }
 
+.panel.title input {
+    margin: 0 4px 0 0;
+    display: block;
+    font-size: 200%;
+    width: 99%;
+    padding: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
 /**** nooku overrides ****/
 .game .validation-advice { float: none; }
 

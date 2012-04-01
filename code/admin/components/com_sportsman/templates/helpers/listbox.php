@@ -103,12 +103,38 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         $config = new KConfig($config);
         $config->append(array(
             'model'    => 'teams',
-            'name'     => 'sportsman_team_id',
-            'value'    => 'id',
-            'text'     => 'title',
-            'prompt'   => '- Select Team -',
-            'attribs'  => array('id' => $config->name)
+            'name'     => 'sportsman_team_id'
         ));
-        return parent::_listbox($config);
+        $config->text = 'title';
+        $config->sort = 'title';
+        
+        return parent::_render($config);
+    }
+    
+    public function members($config = array())
+    {
+        $config = new KConfig($config);
+        $config->append(array(
+            'model'    => 'members',
+            'name'     => 'users_member_id'
+        ));
+        $config->text = 'name';
+        $config->sort = 'name';
+        
+        return parent::_render($config);
+    }
+    
+    public function members_type($config = array())
+    {
+        $config = new KConfig($config);
+        $config->append(array( 'name' => 'type'));
+        
+        $options[] = $this->option(array('value' => 'Player', 'text' => 'Player'));
+        $options[] = $this->option(array('value' => 'Coach', 'text' => 'Coach'));
+        $options[] = $this->option(array('value' => 'Head Coach', 'text' => 'Head Coach'));
+        
+        $config->append(array('options' => $options));
+        
+        return $this->optionlist($config);
     }
 }
