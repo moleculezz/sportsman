@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `#__sportsman_tournaments` (
 ALTER TABLE `#__users` ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS `#__users_members` (
-  `id` int(11) NOT NULL,
+  `users_member_id` int(11) NOT NULL,
   `dob` date NOT NULL,
   `gender` char(1) NOT NULL,
   `address` varchar(60) NOT NULL,
@@ -82,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `#__users_members` (
   `photo` varchar(60) NOT NULL DEFAULT 'media/com_profiles/images/unknown_person.gif',
   `ended_on` datetime NULL DEFAULT NULL,
   `reason_ended` varchar(100) NULL DEFAULT NULL,
-  PRIMARY KEY ( `id` ),
-  CONSTRAINT `fk_id` 
-    FOREIGN KEY (`id`) 
-    REFERENCES `#__users` (`id`)
+  PRIMARY KEY ( `users_member_id` ),
+  CONSTRAINT `fk_users_member_id` 
+    FOREIGN KEY (`users_member_id`) 
+    REFERENCES `jos_users` (`id`)
     ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
