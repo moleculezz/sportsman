@@ -12,61 +12,61 @@
  *
  * @author      G.D. Arends <https://github.com/moleculezz>
  * @category    Nooku
- * @package     Sportsman 
+ * @package     Sportsman
  */
 class ComSportsmanControllerBehaviorExecutable extends ComDefaultControllerBehaviorExecutable
-{  
+{
     public function canBrowse()
     {
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
-        
-        if($user->gid == 18 && !$item->enabled) {
+
+        if ($user->gid == 18 && !$item->enabled) {
             return false;
         }
         return true;
     }
-    
+
     public function canRead()
     {
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
-        
-        if($user->gid == 18 && !$item->enabled) {
+
+        if ($user->gid == 18 && !$item->enabled) {
             return false;
         }
 
         return true;
     }
-    
+
     public function canEdit()
     {
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
-        
-        if($user->gid == 18 && !$item->enabled) {
+
+        if ($user->gid == 18 && !$item->enabled) {
             return false;
         }
         return true;
     }
-    
+
     public function canAdd()
     {
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
-        
-        if($user->gid == 18 && !$item->enabled) {
+
+        if ($user->gid == 18 && !$item->enabled) {
             return false;
         }
         return true;
     }
-    
+
     public function canDelete()
     {
         $user = JFactory::getUser();
         $item = $this->getModel()->getItem();
-        
-        if($user->gid == 18 && !$item->enabled) {
+
+        if ($user->gid == 18 && !$item->enabled) {
             return false;
         }
         return true;

@@ -1,23 +1,23 @@
 <?php
 /**
- * @category	Nooku
- * @package		Sportsman
- * @copyright	Copyright (C) G.D. Arends. All rights reserved.
- * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
+ * @category       Nooku
+ * @package        Sportsman
+ * @copyright      Copyright (C) G.D. Arends. All rights reserved.
+ * @license        GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  */
- 
- 
- /**
+
+
+/**
  * Listbox Template Helper
  *
  * @author      G.D. Arends <https://github.com/moleculezz>
  * @category    Nooku
- * @package     Sportsman 
+ * @package     Sportsman
  */
 class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
 {
 
-    public function sports( $config = array())
+    public function sports($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
@@ -30,8 +30,8 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         ));
         return parent::_listbox($config);
     }
-    
-    public function clubs( $config = array())
+
+    public function clubs($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
@@ -44,8 +44,8 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         ));
         return parent::_listbox($config);
     }
-    
-    public function venues( $config = array())
+
+    public function venues($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
@@ -58,46 +58,47 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         ));
         return parent::_listbox($config);
     }
-    
+
     public function tournaments($config = array())
     {
         $config = new KConfig($config);
         $config->append(array(
             'prompt'   => '- Select Tournament -',
-            'attribs'  => array('id' => $config->name )
+            'attribs'  => array('id' => $config->name)
         ));
-        
+
         $list = $this->getService('com://admin/sportsman.model.tournaments')
             ->set('active', true)
             ->getList();
-            
-        
-        foreach($list as $tournament) {
+
+
+        foreach ($list as $tournament) {
             //TODO Optimization: Remove loop. Only division and tournament id and titles are needed
-            foreach($tournament->toArray() as $key => $val) {
+            foreach ($tournament->toArray() as $key => $val) {
                 $groups[$tournament->division_title][$tournament->title][$key] = $val;
             }
         }
-        
-        foreach($groups as $division => $tournaments) {
-            $options[] = $this->option(array('text' => $division, 'group' => true));
-            foreach($tournaments as $tournament) {
+
+        foreach ($groups as $division => $tournaments) {
+            $options[] = $this->option(array('text'  => $division,
+                                             'group' => true));
+            foreach ($tournaments as $tournament) {
                 $options[] = $this->option(array(
                     'text'    => $tournament['title'],
                     'value'   => $tournament['id'],
                     'attribs' => array(
                         'data-division' => $this->getTemplate()->getView()->getRoute(
-                            'option=com_sportsman&view=teams&format=json&division='.$tournament['sportsman_division_id']
+                            'option=com_sportsman&view=teams&format=json&division=' . $tournament['sportsman_division_id']
                         )
                     )
                 ));
             }
         }
         $config->append(array('options' => $options));
-        
+
         return $this->optionlist($config);
     }
-    
+
     public function teams($config = array())
     {
         $config = new KConfig($config);
@@ -107,10 +108,10 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         ));
         $config->text = 'title';
         $config->sort = 'title';
-        
+
         return parent::_render($config);
     }
-    
+
     public function members($config = array())
     {
         $config = new KConfig($config);
@@ -120,21 +121,24 @@ class ComSportsmanTemplateHelperListbox extends ComDefaultTemplateHelperListbox
         ));
         $config->text = 'name';
         $config->sort = 'name';
-        
+
         return parent::_render($config);
     }
-    
+
     public function members_type($config = array())
     {
         $config = new KConfig($config);
-        $config->append(array( 'name' => 'type'));
-        
-        $options[] = $this->option(array('value' => 'Player', 'text' => 'Player'));
-        $options[] = $this->option(array('value' => 'Coach', 'text' => 'Coach'));
-        $options[] = $this->option(array('value' => 'Head Coach', 'text' => 'Head Coach'));
-        
+        $config->append(array('name' => 'type'));
+
+        $options[] = $this->option(array('value' => 'Player',
+                                         'text'  => 'Player'));
+        $options[] = $this->option(array('value' => 'Coach',
+                                         'text'  => 'Coach'));
+        $options[] = $this->option(array('value' => 'Head Coach',
+                                         'text'  => 'Head Coach'));
+
         $config->append(array('options' => $options));
-        
+
         return $this->optionlist($config);
     }
 }

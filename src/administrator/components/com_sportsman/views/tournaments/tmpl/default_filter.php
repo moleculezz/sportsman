@@ -1,21 +1,21 @@
-<?php 
+<?php
 
-defined('KOOWA') or die( 'Restricted access' ); ?>
+defined('KOOWA') or die('Restricted access') ?>
 
 <div id="filter" class="group">
     <ul>
         <li class="<?= $state->active == '1' ? 'active' : ''; ?>">
-            <a href="<?= @route('active=1' ) ?>">
+            <a href="<?= @route('active=1') ?>">
                 <?= @text('Active') ?>
-            </a> 
+            </a>
         </li>
         <li class="<?= $state->active == '0' ? 'active' : ''; ?> separator-right">
-            <a href="<?= @route('active=0' ) ?>">
+            <a href="<?= @route('active=0') ?>">
                 <?= @text('Inactive') ?>
-            </a> 
+            </a>
         </li>
         <li class="<?= !is_bool($state->active) ? 'active' : ''; ?>">
-            <a href="<?= @route('active=' ) ?>">
+            <a href="<?= @route('active=') ?>">
                 <?= @text('All') ?>
             </a>
         </li>

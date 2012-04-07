@@ -1,7 +1,7 @@
 <?php
 
 class ComSportsmanControllerGame extends ComDefaultControllerDefault
-{ 
+{
     protected function _initialize(KConfig $config)
     {
         $config->append(array(
@@ -9,7 +9,7 @@ class ComSportsmanControllerGame extends ComDefaultControllerDefault
                 'com://admin/versions.controller.behavior.revisable'
             )
         ));
-        
+
         parent::_initialize($config);
     }
 }

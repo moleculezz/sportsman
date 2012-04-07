@@ -7,7 +7,7 @@
     <license>GNU/GPLv3</license>
     <version status="beta">0.1.0</version>
     <description>Sports club manager extension</description>
-    
+
     <administration>
         <submenu>
             <menu view="dashboard">Dashboard</menu>

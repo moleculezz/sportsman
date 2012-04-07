@@ -5,14 +5,14 @@
  * @copyright   Copyright (C) G.D. Arends. All rights reserved.
  * @license     GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  */
- 
- 
- /**
+
+
+/**
  * Team Members Database Table Class
  *
  * @author      G.D. Arends <https://github.com/moleculezz>
  * @category    Nooku
- * @package     Sportsman 
+ * @package     Sportsman
  */
 class ComSportsmanDatabaseTableTeamMembers extends KDatabaseTableAbstract
 {

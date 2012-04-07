@@ -1,18 +1,18 @@
 <?php
 /**
- * @category	Nooku
- * @package		Sportsman
- * @copyright	Copyright (C) G.D. Arends. All rights reserved.
- * @license		GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
+ * @category       Nooku
+ * @package        Sportsman
+ * @copyright      Copyright (C) G.D. Arends. All rights reserved.
+ * @license        GNU GPLv3 <http://www.gnu.org/licenses/gpl.html>
  */
- 
- 
- /**
+
+
+/**
  * Games Database Table Class
  *
  * @author      G.D. Arends <https://github.com/moleculezz>
  * @category    Nooku
- * @package     Sportsman 
+ * @package     Sportsman
  */
 class ComSportsmanDatabaseTableGames extends KDatabaseTableAbstract
 {
@@ -28,7 +28,7 @@ class ComSportsmanDatabaseTableGames extends KDatabaseTableAbstract
                 'com://admin/versions.database.behavior.revisable'
             )
         ));
-        
+
         parent::_initialize($config);
     }
 }

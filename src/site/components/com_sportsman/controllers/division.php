@@ -2,5 +2,5 @@
 
 class ComSportsmanControllerDivision extends ComDefaultControllerResource
 {
-    
+
 }

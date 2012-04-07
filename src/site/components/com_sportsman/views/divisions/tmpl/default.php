@@ -1,8 +1,8 @@
 <ul>
-<? foreach($divisions as $division) : ?>
+    <? foreach ($divisions as $division) : ?>
     <li>
-        <?=$division->id?>. 
+        <?=$division->id?>.
         <?=$division->title?>
     </li>
-<? endforeach; ?>
+    <? endforeach; ?>
 </ul>

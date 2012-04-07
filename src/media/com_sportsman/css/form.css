@@ -1,76 +1,149 @@
-#game-container h2 { margin: 0 }
-
-.tournament select{ font-size: 20px; line-height: 24px; width: 100%; }
-#teams {}
-.drop { min-height: 120px; margin-top: 10px; }
-.teams li { float: left; width: 134px; padding: 2px; margin: 0 2px 2px 0; text-align: center; }
-.drop li h3 { margin: 0 0 2px; cursor: move; font-size: 11px; }
-.drop li img { cursor: move; display: block; margin: 0 auto; }
-.drop li a { float: right; }
-.drop li a.ui-icon-home { float: left; }
-
-.game,
-.versus {text-align: center; }
-.game h2 { line-height: 16px; margin: 0 0 4px; text-align: center; }
-.game ul { display: inline-block; }
-.game ul li { float: left; width:134px; text-align: center;}
-
-#game-container .game input { width: 134px; float: none; font-size: 18px; text-align: center; display: block; clear: both; margin: 0 auto; }
-
-.versus { min-height: 185px; padding:12px; }
-.versus h1 { line-height: 185px; margin: 0; padding: 0; }
-
-.logo {
-    width: 128px;
-    height: 128px;
-    margin: 36px;
+#game-container h2 {
+    margin : 0
 }
 
-.team_images { text-align: right; }
+.tournament select {
+    font-size   : 20px;
+    line-height : 24px;
+    width       : 100%;
+}
 
+#teams {
+}
 
+.drop {
+    min-height : 120px;
+    margin-top : 10px;
+}
+
+.teams li {
+    float      : left;
+    width      : 134px;
+    padding    : 2px;
+    margin     : 0 2px 2px 0;
+    text-align : center;
+}
+
+.drop li h3 {
+    margin    : 0 0 2px;
+    cursor    : move;
+    font-size : 11px;
+}
+
+.drop li img {
+    cursor  : move;
+    display : block;
+    margin  : 0 auto;
+}
+
+.drop li a {
+    float : right;
+}
+
+.drop li a.ui-icon-home {
+    float : left;
+}
+
+.game,
+.versus {
+    text-align : center;
+}
+
+.game h2 {
+    line-height : 16px;
+    margin      : 0 0 4px;
+    text-align  : center;
+}
+
+.game ul {
+    display : inline-block;
+}
+
+.game ul li {
+    float      : left;
+    width      : 134px;
+    text-align : center;
+}
+
+#game-container .game input {
+    width      : 134px;
+    float      : none;
+    font-size  : 18px;
+    text-align : center;
+    display    : block;
+    clear      : both;
+    margin     : 0 auto;
+}
+
+.versus {
+    min-height : 185px;
+    padding    : 12px;
+}
+
+.versus h1 {
+    line-height : 185px;
+    margin      : 0;
+    padding     : 0;
+}
+
+.logo {
+    width  : 128px;
+    height : 128px;
+    margin : 36px;
+}
+
+.team_images {
+    text-align : right;
+}
 
 .panel.divisions {
-    padding-bottom: 14px;
+    padding-bottom : 14px;
 }
 
 .panel.divisions h3 {
-    margin-bottom: 10px;
+    margin-bottom : 10px;
 }
 
 .panel.divisions span {
-    padding: 12px 10px 4px 14px;
-    font-weight: bold;
-    clear: left;
-    float: left;
+    padding     : 12px 10px 4px 14px;
+    font-weight : bold;
+    clear       : left;
+    float       : left;
 }
 
 .panel.divisions input,
 .panel.divisions label {
-    margin-top: 8px;
-    float: left;
+    margin-top : 8px;
+    float      : left;
 }
 
 .panel.divisions input {
-    margin: 9px 5px 0 24px;
-    display: list-item;
-    float: left;
-    clear: left;
+    margin  : 9px 5px 0 24px;
+    display : list-item;
+    float   : left;
+    clear   : left;
 }
 
 .panel.title input {
-    margin: 0 4px 0 0;
-    display: block;
-    font-size: 200%;
-    width: 99%;
-    padding: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+    margin                : 0 4px 0 0;
+    display               : block;
+    font-size             : 200%;
+    width                 : 99%;
+    padding               : 4px;
+    -moz-border-radius    : 4px;
+    -webkit-border-radius : 4px;
+    border-radius         : 4px;
 }
 
 /**** nooku overrides ****/
-.game .validation-advice { float: none; }
+.game .validation-advice {
+    float : none;
+}
 
-.game .validation-advice::before { content: none; }
-.game .validation-advice::after { content: none; }
+.game .validation-advice::before {
+    content : none;
+}
+
+.game .validation-advice::after {
+    content : none;
+}

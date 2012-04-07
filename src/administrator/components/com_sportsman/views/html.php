@@ -2,5 +2,5 @@
 
 class ComSportsmanViewHtml extends ComDefaultViewHtml
 {
-    
+
 }
