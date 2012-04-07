@@ -186,5 +186,5 @@ CREATE OR REPLACE VIEW `#__sportsman_view_games` AS
   LEFT JOIN `#__sportsman_tournaments` AS t ON tbl.sportsman_tournament_id = t.sportsman_tournament_id
   LEFT JOIN `#__sportsman_venues` AS v ON tbl.sportsman_venue_id = v.sportsman_venue_id
   LEFT JOIN `#__sportsman_divisions` AS d ON h.sportsman_division_id = d.sportsman_division_id
-  LEFT JOIN `#__sportsman_sports` AS s ON d.sportsman_sport_id = s.sportsman_sport_id
+  LEFT JOIN `#__sportsman_sports` AS s ON d.sportsman_sport_id = s.sportsman_sport_id;
 
