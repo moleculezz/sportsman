@@ -1,6 +1,4 @@
-<?php
-
-defined('KOOWA') or die('Restricted access') ?>
+<?php defined('KOOWA') or die('Restricted access') ?>
 
 <?= @template('com://admin/default.view.grid.toolbar') ?>
 
