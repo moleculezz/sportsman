@@ -22,7 +22,7 @@ $site = $root . '/' . str_replace(JPATH_ROOT . DS, '', JPATH_FILES) . '/';
 <?= @template('com://admin/default.view.form.toolbar') ?>
 
 <form action="<?= @route('id=' . $team->id) ?>" method="post" id="division-form" class="-koowa-form">
-    <div class="grid_8  alpha">
+    <div class="grid_8 alpha">
         <div class="grid_12 alpha team_images">
             <img id="img-photo" src="<?= (preg_match("/^media/", $team->photo) ? $root : $site) . '/' . $team->photo ?>"
                  title="<?= $team->title ?>" alt="<?= $team->title ?>"/>
@@ -36,6 +36,7 @@ $site = $root . '/' . str_replace(JPATH_ROOT . DS, '', JPATH_FILES) . '/';
                        value="<?= @escape($team->title) ?>" placeholder="<?= @text('Name') ?>"/>
             </div>
         </div>
+        <? if(!$team->isNew()) : ?>
         <div class="grid_12 panel">
             <h3><?= @text( 'Players' ); ?></h3>
             <?= @overlay(array('url'=>@route('option=com_sportsman&view=teammembers&team='.$team->id.'&type='.urlencode('Player').'&layout=team_list#members-list')))?>
@@ -48,6 +49,7 @@ $site = $root . '/' . str_replace(JPATH_ROOT . DS, '', JPATH_FILES) . '/';
             <h3><?= @text( 'Assistant Coach(es)' ); ?></h3>
             <?= @overlay(array('url'=>@route('option=com_sportsman&view=teammembers&team='.$team->id.'&type='.urlencode('Coach').'&layout=team_list#members-list')))?>
         </div>
+        <? endif; ?>
     </div>
     <div class="grid_4 omega">
         <div class="panel">
