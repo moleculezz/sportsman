@@ -135,6 +135,13 @@
     border-radius         : 4px;
 }
 
+/* Team Members
+-------------------------------------------------------------------------------------------- */
+
+.teammember { margin: 10px; float: left; text-align: center; }
+.teammember h4 { margin-top: 5px; }
+.teammember img {border: 1px solid #666; }
+
 /**** nooku overrides ****/
 .game .validation-advice {
     float : none;

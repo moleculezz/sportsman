@@ -22,20 +22,34 @@ $site = $root . '/' . str_replace(JPATH_ROOT . DS, '', JPATH_FILES) . '/';
 <?= @template('com://admin/default.view.form.toolbar') ?>
 
 <form action="<?= @route('id=' . $team->id) ?>" method="post" id="division-form" class="-koowa-form">
-    <div class="grid_8">
-        <div class="team_images">
+    <div class="grid_8  alpha">
+        <div class="grid_12 alpha team_images">
             <img id="img-photo" src="<?= (preg_match("/^media/", $team->photo) ? $root : $site) . '/' . $team->photo ?>"
                  title="<?= $team->title ?>" alt="<?= $team->title ?>"/>
             <img id="img-logo" class="logo"
                  src="<?= (preg_match("/^media/", $team->logo) ? $root : $site) . '/' . $team->logo ?>"
                  title="<?= $team->title ?>" alt="<?= $team->title ?>"/>
         </div>
-        <div class="panel title group">
-            <input class="inputbox required" type="text" name="title" id="title" size="40" maxlength="255"
-                   value="<?= @escape($team->title) ?>" placeholder="<?= @text('Name') ?>"/>
+        <div class="grid_12">
+            <div class="panel title group">
+                <input class="inputbox required" type="text" name="title" id="title" size="40" maxlength="255"
+                       value="<?= @escape($team->title) ?>" placeholder="<?= @text('Name') ?>"/>
+            </div>
+        </div>
+        <div class="grid_12 panel">
+            <h3><?= @text( 'Players' ); ?></h3>
+            <?= @overlay(array('url'=>@route('option=com_sportsman&view=teammembers&team='.$team->id.'&type='.urlencode('Player').'&layout=team_list#members-list')))?>
+        </div>
+        <div class="grid_6 panel">
+            <h3><?= @text( 'Head Coach(es)' ); ?></h3>
+            <?= @overlay(array('url'=>@route('option=com_sportsman&view=teammembers&team='.$team->id.'&type='.urlencode('Head Coach').'&layout=team_list#members-list')))?>
+        </div>
+        <div class="grid_6 omega panel">
+            <h3><?= @text( 'Assistant Coach(es)' ); ?></h3>
+            <?= @overlay(array('url'=>@route('option=com_sportsman&view=teammembers&team='.$team->id.'&type='.urlencode('Coach').'&layout=team_list#members-list')))?>
         </div>
     </div>
-    <div class="grid_4">
+    <div class="grid_4 omega">
         <div class="panel">
             <h3><?= @text('Details'); ?></h3>
             <table class="admintable">
