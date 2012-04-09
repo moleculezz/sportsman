@@ -19,7 +19,10 @@ class ComSportsmanModelTeamMembers extends ComDefaultModelDefault
     public function __construct(KConfig $config)
     {
         parent::__construct($config);
-
+        $this->_state
+             ->insert('team', 'int')
+             ->insert('member', 'int')
+             ->insert('type', 'string');
     }
 
     protected function _buildQueryColumns(KDatabaseQuery $query)
@@ -27,6 +30,26 @@ class ComSportsmanModelTeamMembers extends ComDefaultModelDefault
         parent::_buildQueryColumns($query);
         $query->select('users.name, users.email')
             ->select('members.dob, members.photo');
+    }
+
+    protected function _buildQueryWhere(KDatabaseQuery $query)
+    {
+        $state = $this->_state;
+
+
+        if (is_numeric($state->team)) {
+            $query->where('tbl.sportsman_team_id', '=', $state->team);
+        }
+
+        if (is_numeric($state->member)) {
+            $query->where('tbl.users_member_id', '=', $state->member);
+        }
+
+        if (!empty($state->type)) {
+            $query->where('tbl.type', '=', $state->type);
+        }
+
+        parent::_buildQueryWhere($query);
     }
 
     protected function _buildQueryJoins(KDatabaseQuery $query)
