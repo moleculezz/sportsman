@@ -32,8 +32,6 @@ class ComSportsmanDatabaseBehaviorExtendable extends KDatabaseBehaviorAbstract
     /**
      * Modify the select query
      *
-     *
-     * This will join the main table with the customs table..
      */
 
 
@@ -59,7 +57,6 @@ class ComSportsmanDatabaseBehaviorExtendable extends KDatabaseBehaviorAbstract
     /**
      * After a new insert on the main table we also need to insert the custom fields.
      *
-     * This will be done to 'tablename'_cstms the key will be the same as the main table key.
      */
 
     protected function _afterTableInsert(KCommandContext $context)
@@ -70,7 +67,6 @@ class ComSportsmanDatabaseBehaviorExtendable extends KDatabaseBehaviorAbstract
         $tablename = str_ireplace($package . '_', '', $table->getName());
 
         if ($database = $this->getService('com://' . $app . '/' . $tablename . '.database.table.' . $this->_extending)) {
-            //check if the is a cstms table. If not we don't want to extend this table.
 
             $row = $database->getRow();
 
@@ -101,7 +97,6 @@ class ComSportsmanDatabaseBehaviorExtendable extends KDatabaseBehaviorAbstract
         $tablename = str_ireplace($package . '_', '', $table->getName());
 
         if ($database = $this->getService('com://' . $app . '/' . $tablename . '.database.table.' . $this->_extending)) {
-            //check if the is a cstms table. If not we don't want to extend this table.
             $row = $database->getRow();
 
             $row->id = $context->data->id;
