@@ -34,7 +34,7 @@ class ComSportsmanTemplateHelperModal extends KTemplateHelperAbstract
         $input = '<input name="%1$s" id="%1$s" value="%2$s" %3$s size="40" />';
 
         $link = '<a class="modal"
-					rel="{\'ajaxOptions\': {\'method\': \'get\'}, \'handler\': \'iframe\', \'size\': {\'x\': 700}}"
+					rel="{\'ajaxOptions\': {\'method\': \'get\'}, \'handler\': \'iframe\', \'size\': {\'x\': 725}}"
 					href="%s">'
             . $config->link_text
             . '</a>';

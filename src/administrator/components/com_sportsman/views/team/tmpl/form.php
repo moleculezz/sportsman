@@ -104,7 +104,7 @@ $site = $root . '/' . str_replace(JPATH_ROOT . DS, '', JPATH_FILES) . '/';
                         <?= @helper('com://admin/sportsman.template.helper.modal.select', array(
                         'name'  => 'logo',
                         'value' => $team->logo,
-                        'link'  => @route('option=com_sportsman&view=images&tmpl=component')
+                        'link'  => @route('option=com_files&view=images&layout=select&tmpl=component')
                     )); ?>
                     </td>
                 </tr>
